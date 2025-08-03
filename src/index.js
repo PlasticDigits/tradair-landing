@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Import Radix Themes CSS
+import '@radix-ui/themes/styles.css';
+
+// Import Flowbite JavaScript for interactive components
+import 'flowbite';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -1,0 +1,53 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bellGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
+    </linearGradient>
+    <filter id="bellGlow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Bell body -->
+  <path d="M32 12 C26 12 21 17 21 23 L21 32 C21 36 19 40 16 42 L48 42 C45 40 43 36 43 32 L43 23 C43 17 38 12 32 12 Z" 
+        fill="url(#bellGradient)" filter="url(#bellGlow)" stroke="#7C3AED" stroke-width="2"/>
+  
+  <!-- Bell clapper -->
+  <circle cx="32" cy="36" r="2" fill="#00D4FF"/>
+  <line x1="32" y1="34" x2="32" y2="20" stroke="#00D4FF" stroke-width="1"/>
+  
+  <!-- Bell bottom -->
+  <path d="M16 42 Q32 46 48 42" fill="none" stroke="#7C3AED" stroke-width="2"/>
+  
+  <!-- Sound waves -->
+  <g stroke="#00D4FF" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M48 20 Q52 24 52 32 Q52 40 48 44"/>
+    <path d="M16 20 Q12 24 12 32 Q12 40 16 44"/>
+    <path d="M44 24 Q46 26 46 32 Q46 38 44 40"/>
+    <path d="M20 24 Q18 26 18 32 Q18 38 20 40"/>
+  </g>
+  
+  <!-- Top mounting -->
+  <rect x="30" y="8" width="4" height="6" fill="#7C3AED" rx="2"/>
+  
+  <!-- Notification dot -->
+  <circle cx="44" cy="16" r="4" fill="#FF0066" stroke="#FFFFFF" stroke-width="1"/>
+  <text x="44" y="18" font-family="Arial, sans-serif" font-size="6" font-weight="bold" text-anchor="middle" fill="#FFFFFF">3</text>
+  
+  <!-- Base vibration lines -->
+  <g stroke="#FF00FF" stroke-width="1" opacity="0.4">
+    <line x1="28" y1="48" x2="36" y2="48"/>
+    <line x1="26" y1="52" x2="38" y2="52"/>
+  </g>
+  
+  <!-- Alert indicator -->
+  <g transform="translate(32, 56)">
+    <circle cx="0" cy="0" r="3" fill="#FF0066"/>
+    <text x="0" y="1" font-family="Arial, sans-serif" font-size="4" font-weight="bold" text-anchor="middle" fill="#FFFFFF">!</text>
+  </g>
+</svg>

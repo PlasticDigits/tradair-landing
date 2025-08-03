@@ -1,13 +1,170 @@
-body {
+/* Import custom fonts */
+@import './fonts.css';
+
+/* Tailwind base styles */
+@import "tailwindcss";
+
+/* Flowbite */
+@source "../node_modules/flowbite";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+
+
+/* Custom Tailwind configuration for Tradair */
+@theme {
+  /* Custom font families from style guide */
+  --font-display: 'Azonix', Arial, sans-serif;
+  --font-interface: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: Orbitron, monospace;
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Primary brand colors */
+  --color-tradair-purple: #8B5CF6;
+  --color-tradair-deep-purple: #7C3AED;
+  --color-tradair-light-purple: #A855F7;
+  
+  /* Secondary colors */
+  --color-neon-cyan: #00D4FF;
+  --color-neon-pink: #FF00FF;
+  --color-neon-blue: #0099FF;
+  
+  /* Neutral colors */
+  --color-pure-white: #FFFFFF;
+  --color-light-gray: #F8FAFC;
+  --color-medium-gray: #64748B;
+  --color-dark-gray: #1E293B;
+  --color-cyber-black: #0A0A0A;
+  
+  /* Custom spacing scale */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  
+  /* Typography scale */
+  --font-size-brand-hero: 3.5rem;
+  --font-size-brand-hero-mobile: 2.5rem;
+  --font-size-major-heading: 2.25rem;
+  --font-size-major-heading-mobile: 1.875rem;
+  --font-size-section-header: 1.5rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  
+  /* Border radius */
+  --radius-card: 16px;
+  --radius-button: 8px;
+  
+  /* Breakpoints */
+  --breakpoint-sm: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1200px;
+}
+
+/* Custom utility classes for cyberpunk effects */
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+  
+  .text-glow-cyan {
+    text-shadow: 0 0 10px #00D4FF, 0 0 20px #00D4FF, 0 0 30px #00D4FF;
+  }
+  
+  .text-glow-pink {
+    text-shadow: 0 0 10px #FF00FF, 0 0 20px #FF00FF, 0 0 30px #FF00FF;
+  }
+  
+  .cyberpunk-border {
+    border: 2px solid #00D4FF;
+    box-shadow: 0 0 10px #00D4FF, inset 0 0 10px rgba(0, 212, 255, 0.1);
+  }
+  
+  /* Background gradients */
+  .bg-purple-gradient {
+    background-image: linear-gradient(to right, #8B5CF6, #A855F7);
+  }
+  
+  .bg-cyber-gradient {
+    background-image: linear-gradient(to bottom, #0A0A0A, #1A1A2E);
+  }
+  
+  .bg-neon-glow {
+    background-image: radial-gradient(ellipse at center, #00D4FF 0%, #FF00FF 100%);
+  }
+  
+  /* Box shadows */
+  .shadow-card {
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.1);
+  }
+  
+  .shadow-glow-cyan {
+    box-shadow: 0 0 10px #00D4FF;
+  }
+  
+  .shadow-glow-pink {
+    box-shadow: 0 0 10px #FF00FF;
+  }
+  
+  .shadow-purple-glow {
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  }
+  
+  /* Custom animations */
+  .animate-pulse-glow {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+/* Keyframes for custom animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+html, body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  padding: 0;
+  background-color: #0A0A0A; /* cyber-black to prevent white flicker */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: 'Orbitron', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Base typography styles following the style guide */
+h1 {
+  font-family: 'Azonix', Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+h2 {
+  font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 500;
+  line-height: 1.3;
 }

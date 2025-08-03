@@ -1,0 +1,71 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chipIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B"/>
+      <stop offset="50%" style="stop-color:#64748B"/>
+      <stop offset="100%" style="stop-color:#1E293B"/>
+    </linearGradient>
+    <linearGradient id="coreIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Chip base -->
+  <rect x="12" y="12" width="40" height="40" rx="2" ry="2" fill="url(#chipIconGradient)" stroke="#64748B" stroke-width="1"/>
+  
+  <!-- Pins -->
+  <g fill="#64748B">
+    <!-- Top pins -->
+    <rect x="18" y="8" width="2" height="6" rx="1"/>
+    <rect x="24" y="8" width="2" height="6" rx="1"/>
+    <rect x="30" y="8" width="2" height="6" rx="1"/>
+    <rect x="36" y="8" width="2" height="6" rx="1"/>
+    <rect x="42" y="8" width="2" height="6" rx="1"/>
+    
+    <!-- Bottom pins -->
+    <rect x="18" y="50" width="2" height="6" rx="1"/>
+    <rect x="24" y="50" width="2" height="6" rx="1"/>
+    <rect x="30" y="50" width="2" height="6" rx="1"/>
+    <rect x="36" y="50" width="2" height="6" rx="1"/>
+    <rect x="42" y="50" width="2" height="6" rx="1"/>
+    
+    <!-- Left pins -->
+    <rect x="8" y="18" width="6" height="2" ry="1"/>
+    <rect x="8" y="24" width="6" height="2" ry="1"/>
+    <rect x="8" y="30" width="6" height="2" ry="1"/>
+    <rect x="8" y="36" width="6" height="2" ry="1"/>
+    <rect x="8" y="42" width="6" height="2" ry="1"/>
+    
+    <!-- Right pins -->
+    <rect x="50" y="18" width="6" height="2" ry="1"/>
+    <rect x="50" y="24" width="6" height="2" ry="1"/>
+    <rect x="50" y="30" width="6" height="2" ry="1"/>
+    <rect x="50" y="36" width="6" height="2" ry="1"/>
+    <rect x="50" y="42" width="6" height="2" ry="1"/>
+  </g>
+  
+  <!-- Central core -->
+  <rect x="20" y="20" width="24" height="24" rx="3" ry="3" fill="url(#coreIconGradient)" stroke="#7C3AED" stroke-width="1"/>
+  
+  <!-- Neural pathways -->
+  <g stroke="#00D4FF" stroke-width="0.8" fill="none">
+    <path d="M24 24 L28 24 L28 28 L32 28"/>
+    <path d="M36 28 L40 28 L40 24"/>
+    <path d="M24 32 L28 32 L28 36 L32 36"/>
+    <path d="M36 36 L40 36 L40 32"/>
+    <path d="M28 40 L32 40 L36 40"/>
+  </g>
+  
+  <!-- Processing nodes -->
+  <g fill="#00D4FF">
+    <circle cx="26" cy="26" r="1"/>
+    <circle cx="32" cy="28" r="1"/>
+    <circle cx="38" cy="26" r="1"/>
+    <circle cx="30" cy="32" r="1"/>
+    <circle cx="34" cy="38" r="1"/>
+  </g>
+  
+  <!-- AI label -->
+  <text x="32" y="36" font-family="Arial, sans-serif" font-size="8" font-weight="bold" text-anchor="middle" fill="#FFFFFF">AI</text>
+</svg>

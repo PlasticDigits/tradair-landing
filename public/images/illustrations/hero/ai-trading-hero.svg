@@ -1,0 +1,128 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="50%" style="stop-color:#A855F7"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E293B"/>
+      <stop offset="100%" style="stop-color:#0A0A0A"/>
+    </linearGradient>
+    <filter id="heroGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background elements -->
+  <rect x="0" y="0" width="600" height="400" fill="url(#heroGradient)" opacity="0.1"/>
+  
+  <!-- Central robot/AI figure -->
+  <g transform="translate(300, 200)">
+    <!-- Robot body -->
+    <rect x="-40" y="-60" width="80" height="120" rx="20" ry="20" fill="url(#heroGradient)" filter="url(#heroGlow)" stroke="#7C3AED" stroke-width="3"/>
+    
+    <!-- Robot head -->
+    <rect x="-30" y="-100" width="60" height="50" rx="15" ry="15" fill="url(#heroGradient)" stroke="#7C3AED" stroke-width="2"/>
+    
+    <!-- Eyes -->
+    <circle cx="-15" cy="-80" r="6" fill="#00D4FF" filter="url(#heroGlow)"/>
+    <circle cx="15" cy="-80" r="6" fill="#00D4FF" filter="url(#heroGlow)"/>
+    
+    <!-- Antenna -->
+    <line x1="0" y1="-100" x2="0" y2="-120" stroke="#7C3AED" stroke-width="3"/>
+    <circle cx="0" cy="-125" r="5" fill="#00D4FF" filter="url(#heroGlow)"/>
+    
+    <!-- Arms holding screens -->
+    <g stroke="#7C3AED" stroke-width="4" fill="none">
+      <path d="M-40 -20 L-80 -10 L-90 10"/>
+      <path d="M40 -20 L80 -10 L90 10"/>
+    </g>
+    
+    <!-- Left screen -->
+    <g transform="translate(-110, 0)">
+      <rect x="0" y="0" width="40" height="30" fill="url(#screenGradient)" stroke="#64748B" stroke-width="1" rx="4"/>
+      <!-- Chart on screen -->
+      <g stroke="#00D4FF" stroke-width="1" fill="none">
+        <path d="M5 20 L10 15 L15 18 L20 10 L25 12 L30 8 L35 5"/>
+      </g>
+      <!-- Price -->
+      <text x="20" y="10" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#00FF88">$65,234</text>
+    </g>
+    
+    <!-- Right screen -->
+    <g transform="translate(70, 0)">
+      <rect x="0" y="0" width="40" height="30" fill="url(#screenGradient)" stroke="#64748B" stroke-width="1" rx="4"/>
+      <!-- AI metrics -->
+      <text x="20" y="10" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#8B5CF6">AI: 94%</text>
+      <text x="20" y="18" font-family="Arial, sans-serif" font-size="4" text-anchor="middle" fill="#00D4FF">SUCCESS</text>
+      <text x="20" y="25" font-family="Arial, sans-serif" font-size="4" text-anchor="middle" fill="#00FF88">+$12.5K</text>
+    </g>
+    
+    <!-- Central AI core -->
+    <circle cx="0" cy="-10" r="15" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"/>
+    <text x="0" y="-6" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#8B5CF6">AI</text>
+    
+    <!-- Data streams -->
+    <g stroke="#00D4FF" stroke-width="1" opacity="0.6">
+      <path d="M-15 -10 Q-30 -5 -45 0"/>
+      <path d="M15 -10 Q30 -5 45 0"/>
+      <path d="M0 5 Q-10 15 -20 25"/>
+      <path d="M0 5 Q10 15 20 25"/>
+    </g>
+  </g>
+  
+  <!-- Floating data points -->
+  <g fill="#00D4FF" opacity="0.8">
+    <circle cx="100" cy="100" r="3"/>
+    <circle cx="500" cy="120" r="3"/>
+    <circle cx="150" cy="300" r="3"/>
+    <circle cx="450" cy="280" r="3"/>
+  </g>
+  
+  <!-- Data flow lines -->
+  <g stroke="#FF00FF" stroke-width="1" opacity="0.4">
+    <path d="M100 100 Q200 150 300 140"/>
+    <path d="M500 120 Q400 150 300 140"/>
+    <path d="M150 300 Q200 250 300 260"/>
+    <path d="M450 280 Q400 250 300 260"/>
+  </g>
+  
+  <!-- Cryptocurrency symbols floating -->
+  <g transform="translate(80, 80)" fill="#00FF88" opacity="0.6">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="20" font-weight="bold">₿</text>
+  </g>
+  <g transform="translate(520, 100)" fill="#8B5CF6" opacity="0.6">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Ξ</text>
+  </g>
+  
+  <!-- Performance indicators -->
+  <g transform="translate(50, 320)">
+    <rect x="0" y="0" width="60" height="20" fill="#00FF88" fill-opacity="0.2" stroke="#00FF88" rx="10"/>
+    <text x="30" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#00FF88">+24.7% ROI</text>
+  </g>
+  
+  <g transform="translate(490, 320)">
+    <rect x="0" y="0" width="60" height="20" fill="#8B5CF6" fill-opacity="0.2" stroke="#8B5CF6" rx="10"/>
+    <text x="30" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#8B5CF6">AI ACTIVE</text>
+  </g>
+  
+  <!-- Neural network background -->
+  <g stroke="#8B5CF6" stroke-width="0.5" opacity="0.2" fill="none">
+    <path d="M50 50 Q150 100 250 80 Q350 60 450 100 Q520 120 550 100"/>
+    <path d="M50 350 Q150 300 250 320 Q350 340 450 300 Q520 280 550 300"/>
+    <path d="M50 200 Q100 180 150 200 Q200 220 250 200 Q300 180 350 200 Q400 220 450 200 Q500 180 550 200"/>
+  </g>
+  
+  <!-- Corner accents -->
+  <g fill="#FF00FF" opacity="0.4">
+    <circle cx="20" cy="20" r="2"/>
+    <circle cx="580" cy="20" r="2"/>
+    <circle cx="20" cy="380" r="2"/>
+    <circle cx="580" cy="380" r="2"/>
+  </g>
+</svg>

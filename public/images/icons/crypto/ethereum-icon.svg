@@ -1,0 +1,42 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ethGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
+    </linearGradient>
+    <filter id="ethGlow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Ethereum diamond shape -->
+  <g transform="translate(32, 32)">
+    <!-- Top diamond -->
+    <path d="M0 -20 L12 -8 L0 -2 L-12 -8 Z" fill="url(#ethGradient)" filter="url(#ethGlow)" stroke="#7C3AED" stroke-width="1"/>
+    
+    <!-- Bottom diamond -->
+    <path d="M0 2 L12 8 L0 20 L-12 8 Z" fill="url(#ethGradient)" filter="url(#ethGlow)" stroke="#7C3AED" stroke-width="1" opacity="0.8"/>
+    
+    <!-- Central connecting lines -->
+    <line x1="-12" y1="-8" x2="12" y2="8" stroke="#00D4FF" stroke-width="0.5" opacity="0.6"/>
+    <line x1="12" y1="-8" x2="-12" y2="8" stroke="#00D4FF" stroke-width="0.5" opacity="0.6"/>
+    
+    <!-- Center highlight -->
+    <circle cx="0" cy="0" r="2" fill="#00D4FF" opacity="0.8"/>
+  </g>
+  
+  <!-- Circular background -->
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#8B5CF6" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Corner accent dots -->
+  <g fill="#00D4FF" opacity="0.6">
+    <circle cx="8" cy="8" r="1"/>
+    <circle cx="56" cy="8" r="1"/>
+    <circle cx="8" cy="56" r="1"/>
+    <circle cx="56" cy="56" r="1"/>
+  </g>
+</svg>

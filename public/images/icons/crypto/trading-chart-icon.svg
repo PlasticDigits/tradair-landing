@@ -1,0 +1,53 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="chartIconGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Chart background -->
+  <rect x="8" y="8" width="48" height="48" fill="#0A0A0A" stroke="#64748B" stroke-width="1" rx="4"/>
+  
+  <!-- Grid lines -->
+  <g stroke="#1E293B" stroke-width="0.5">
+    <line x1="8" y1="20" x2="56" y2="20"/>
+    <line x1="8" y1="32" x2="56" y2="32"/>
+    <line x1="8" y1="44" x2="56" y2="44"/>
+    <line x1="20" y1="8" x2="20" y2="56"/>
+    <line x1="32" y1="8" x2="32" y2="56"/>
+    <line x1="44" y1="8" x2="44" y2="56"/>
+  </g>
+  
+  <!-- Candlestick data -->
+  <g>
+    <!-- Green candles -->
+    <rect x="14" y="35" width="4" height="12" fill="#00FF88"/>
+    <line x1="16" y1="32" x2="16" y2="50" stroke="#00FF88" stroke-width="0.5"/>
+    
+    <rect x="26" y="25" width="4" height="15" fill="#00FF88"/>
+    <line x1="28" y1="22" x2="28" y2="45" stroke="#00FF88" stroke-width="0.5"/>
+    
+    <rect x="38" y="18" width="4" height="12" fill="#00FF88"/>
+    <line x1="40" y1="15" x2="40" y2="35" stroke="#00FF88" stroke-width="0.5"/>
+    
+    <!-- Red candles -->
+    <rect x="20" y="30" width="4" height="10" fill="#FF0066"/>
+    <line x1="22" y1="28" x2="22" y2="42" stroke="#FF0066" stroke-width="0.5"/>
+    
+    <rect x="32" y="22" width="4" height="8" fill="#FF0066"/>
+    <line x1="34" y1="20" x2="34" y2="32" stroke="#FF0066" stroke-width="0.5"/>
+    
+    <rect x="44" y="20" width="4" height="10" fill="#FF0066"/>
+    <line x1="46" y1="18" x2="46" y2="32" stroke="#FF0066" stroke-width="0.5"/>
+  </g>
+  
+  <!-- Trend line -->
+  <path d="M12 45 Q24 35 36 25 Q48 20 52 18" fill="none" stroke="url(#chartIconGradient)" stroke-width="2"/>
+  
+  <!-- Profit indicator -->
+  <g transform="translate(48, 12)">
+    <rect x="0" y="0" width="12" height="6" fill="#00FF88" fill-opacity="0.8" rx="3"/>
+    <text x="6" y="4" font-family="Arial, sans-serif" font-size="4" font-weight="bold" text-anchor="middle" fill="#FFFFFF">+12%</text>
+  </g>
+</svg>

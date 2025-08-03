@@ -1,0 +1,63 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
+    </linearGradient>
+    <filter id="nodeGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Network connections -->
+  <g stroke="#00D4FF" stroke-width="2" opacity="0.7">
+    <!-- Layer 1 to Layer 2 connections -->
+    <line x1="40" y1="60" x2="100" y2="40"/>
+    <line x1="40" y1="60" x2="100" y2="80"/>
+    <line x1="40" y1="60" x2="100" y2="120"/>
+    <line x1="40" y1="100" x2="100" y2="40"/>
+    <line x1="40" y1="100" x2="100" y2="80"/>
+    <line x1="40" y1="100" x2="100" y2="120"/>
+    <line x1="40" y1="140" x2="100" y2="40"/>
+    <line x1="40" y1="140" x2="100" y2="80"/>
+    <line x1="40" y1="140" x2="100" y2="120"/>
+    
+    <!-- Layer 2 to Layer 3 connections -->
+    <line x1="100" y1="40" x2="160" y2="80"/>
+    <line x1="100" y1="80" x2="160" y2="80"/>
+    <line x1="100" y1="120" x2="160" y2="80"/>
+  </g>
+  
+  <!-- Layer 1 nodes (input) -->
+  <circle cx="40" cy="60" r="8" fill="url(#nodeGradient)" filter="url(#nodeGlow)" stroke="#7C3AED" stroke-width="2"/>
+  <circle cx="40" cy="100" r="8" fill="url(#nodeGradient)" filter="url(#nodeGlow)" stroke="#7C3AED" stroke-width="2"/>
+  <circle cx="40" cy="140" r="8" fill="url(#nodeGradient)" filter="url(#nodeGlow)" stroke="#7C3AED" stroke-width="2"/>
+  
+  <!-- Layer 2 nodes (hidden) -->
+  <circle cx="100" cy="40" r="10" fill="url(#nodeGradient)" filter="url(#nodeGlow)" stroke="#7C3AED" stroke-width="2"/>
+  <circle cx="100" cy="80" r="10" fill="url(#nodeGradient)" filter="url(#nodeGlow)" stroke="#7C3AED" stroke-width="2"/>
+  <circle cx="100" cy="120" r="10" fill="url(#nodeGradient)" filter="url(#nodeGlow)" stroke="#7C3AED" stroke-width="2"/>
+  
+  <!-- Layer 3 node (output) -->
+  <circle cx="160" cy="80" r="12" fill="#00D4FF" filter="url(#nodeGlow)" stroke="#7C3AED" stroke-width="2"/>
+  
+  <!-- Data flow indicators -->
+  <g fill="#FF00FF" opacity="0.8">
+    <circle cx="70" cy="50" r="2"/>
+    <circle cx="130" cy="60" r="2"/>
+    <circle cx="70" cy="110" r="2"/>
+    <circle cx="130" cy="100" r="2"/>
+  </g>
+  
+  <!-- Labels -->
+  <text x="40" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#7C3AED">INPUT</text>
+  <text x="100" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#7C3AED">HIDDEN</text>
+  <text x="160" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#7C3AED">OUTPUT</text>
+  
+  <!-- Neural Network title -->
+  <text x="100" y="180" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#8B5CF6">NEURAL NETWORK</text>
+</svg>
