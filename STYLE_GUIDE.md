@@ -1,56 +1,59 @@
-# Tradair AI Style Guide
+# Traken AI Style Guide
 
 ## Brand Overview
 
-Tradair AI represents the cutting-edge intersection of artificial intelligence and cryptocurrency trading. Our visual identity embodies innovation, trust, and futuristic technology while maintaining professional accessibility for traders and investors.
+Traken AI is a next‑generation trading intelligence brand. The visual identity communicates confident, futuristic innovation with a calm, premium feel. The aesthetic is deep‑space purples, neon energy glows, and smooth, curved grids with wireframe globes and floating orbs. All motion is fluid and understated—never glitchy—reinforcing reliability and clarity.
 
 ## Visual Themes
 
-### Primary Theme: Clean Professional
+### Primary Theme: Neo‑Futuristic Cosmic Grid
 
-- **Use Case**: Landing pages, documentation, business communications
-- **Aesthetic**: Modern, clean, approachable yet sophisticated
-- **Background**: Light gradients, white/off-white base
+- **Use Case**: Marketing site, hero, product pages, presentations
+- **Aesthetic**: Deep‑space purples, neon violet/magenta accents, curved radial grid, wireframe globes, soft glow orbs, star flares
+- **Background**: Radial/linear gradient from deep space to indigo with a low‑opacity curved grid overlay and subtle vignette
 
-### Secondary Theme: Cyberpunk Futuristic
+### Secondary Theme: Clean Professional
 
-- **Use Case**: AI feature showcases, promotional content, social media
-- **Aesthetic**: Dark, neon-lit, high-tech, cutting-edge
-- **Background**: Dark purple/black with neon accents
+- **Use Case**: Documentation, legal, long‑form content
+- **Aesthetic**: Modern, clean, approachable; reduced effects; high readability
+- **Background**: Light neutrals with restrained purple accents
 
 ## Color Palette
 
-### Primary Colors
+### Core Brand Colors
 
-- **Tradair Purple**: `#8B5CF6` (Primary brand color)
-- **Deep Purple**: `#7C3AED` (Hover states, emphasis)
-- **Light Purple**: `#A855F7` (Accents, gradients)
+- **Electric Violet**: `#8A3CFF` (Primary accent, CTAs, highlights)
+- **Magenta Glow**: `#E45EFF` (Secondary accent, glows)
+- **Soft Lavender**: `#C27EFF` (Sub-accents, gradients)
 
-### Secondary Colors
+### Background & Surfaces
 
-- **Neon Cyan**: `#00D4FF` (Cyberpunk theme highlights)
-- **Neon Pink**: `#FF00FF` (AI emphasis, alerts)
-- **Electric Blue**: `#0099FF` (Interactive elements)
+- **Deep Space**: `#0B0814` (Primary background)
+- **Cosmic Indigo**: `#2B0B65` (Gradient stop / section accents)
+- **Vignette Overlay**: `rgba(0,0,0,0.25)` (edge shading)
 
-### Neutral Colors
+### Text & Lines
 
-- **Pure White**: `#FFFFFF` (Clean theme backgrounds)
-- **Light Gray**: `#F8FAFC` (Section backgrounds)
-- **Medium Gray**: `#64748B` (Secondary text)
-- **Dark Gray**: `#1E293B` (Primary text)
-- **Cyber Black**: `#0A0A0A` (Dark theme background)
+- **Text Primary**: `#FFFFFF`
+- **Text Secondary**: `#EDEAF7`
+- **Grid Stroke**: `#3B2A66` at 12–18% opacity
+
+### Optional Accents
+
+- **Neon Cyan**: `#00D4FF` (tech highlights)
+- **Electric Blue**: `#5BC0FF` (interactive states)
 
 ### Gradient Combinations
 
-- **Purple Gradient**: Linear gradient from `#8B5CF6` to `#A855F7`
-- **Cyber Gradient**: Linear gradient from `#0A0A0A` to `#1A1A2E`
-- **Neon Glow**: Radial gradient with neon cyan/pink effects
+- **Deep‑Space Radial**: radial‑gradient(circle at 50% 55%, `#2B0B65` 0%, `#0B0814` 58%, `#0B0814` 100%)
+- **Violet → Magenta CTA**: linear‑gradient(135deg, `#8A3CFF` 0%, `#E45EFF` 100%)
+- **Lavender Sheen**: linear‑gradient(180deg, `#C27EFF` 0%, transparent 70%)
 
 ## Typography
 
 ### Font Stack Hierarchy
 
-#### Primary Display Font - Azonix
+#### Primary Display Font — Azonix
 
 ```css
 font-family: "Azonix", Arial, sans-serif;
@@ -60,7 +63,7 @@ font-family: "Azonix", Arial, sans-serif;
 - **Character**: Bold, futuristic, brand-focused
 - **Best for**: H1 headlines, brand elements, call-to-action headers
 
-#### Secondary Interface Font - Exo 2
+#### Secondary Interface Font — Exo 2
 
 ```css
 font-family: "Exo 2", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -70,7 +73,7 @@ font-family: "Exo 2", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 - **Character**: Modern, tech-forward, clean
 - **Best for**: H2-H3 headings, interface text, feature titles
 
-#### Body Font - Inter
+#### Body Font — Inter
 
 ```css
 font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
@@ -80,7 +83,7 @@ font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", s
 - **Character**: Highly readable, neutral, professional
 - **Best for**: Paragraphs, descriptions, documentation
 
-#### Accent Font - Orbitron (Optional)
+#### Accent Font — Orbitron (Optional)
 
 ```css
 font-family: "Orbitron", monospace;
@@ -92,23 +95,23 @@ font-family: "Orbitron", monospace;
 
 ### Font Hierarchy
 
-#### Brand Headlines (H1) - Azonix
+#### Brand Headlines (H1) — Azonix
 
-- **Size**: 3.5rem (56px) desktop, 2.5rem (40px) mobile
-- **Weight**: 700 (Bold)
-- **Line Height**: 1.1
+- **Size**: `clamp(2.5rem, 6vw, 5.75rem)`
+- **Weight**: 700 (Bold, all‑caps suggested)
+- **Line Height**: 1.05–1.1
 - **Font**: Azonix
-- **Usage**: Main hero titles, brand statements
+- **Usage**: Hero titles, brand statements
 
-#### Major Headings (H2) - Exo 2
+#### Major Headings (H2) — Exo 2
 
-- **Size**: 2.25rem (36px) desktop, 1.875rem (30px) mobile
-- **Weight**: 600 (Semi-bold)
-- **Line Height**: 1.2
+- **Size**: `clamp(1.75rem, 3.2vw, 2.5rem)`
+- **Weight**: 600 (Semi‑bold)
+- **Line Height**: 1.15–1.2
 - **Font**: Exo 2
 - **Usage**: Section headers, feature headlines
 
-#### Section Headers (H3) - Exo 2
+#### Section Headers (H3) — Exo 2
 
 - **Size**: 1.5rem (24px)
 - **Weight**: 500 (Medium)
@@ -116,7 +119,7 @@ font-family: "Orbitron", monospace;
 - **Font**: Exo 2
 - **Usage**: Feature titles, card headers, navigation
 
-#### Body Text - Inter
+#### Body Text — Inter
 
 - **Size**: 1rem (16px)
 - **Weight**: 400 (Regular)
@@ -124,7 +127,7 @@ font-family: "Orbitron", monospace;
 - **Font**: Inter
 - **Usage**: Paragraphs, descriptions, general content
 
-#### Small Text - Inter
+#### Small Text — Inter
 
 - **Size**: 0.875rem (14px)
 - **Weight**: 400 (Regular)
@@ -132,7 +135,7 @@ font-family: "Orbitron", monospace;
 - **Font**: Inter
 - **Usage**: Captions, footnotes, fine print
 
-#### Tech/Data Elements - Orbitron
+#### Tech/Data Elements — Orbitron
 
 - **Size**: Variable
 - **Weight**: 400-700
@@ -142,7 +145,7 @@ font-family: "Orbitron", monospace;
 
 ### Special Typography Effects
 
-#### Cyberpunk Headers (Orbitron/Exo 2)
+#### Neon Headers (Orbitron/Exo 2)
 
 - **Glow Effect**: `text-shadow: 0 0 10px currentColor`
 - **Neon Style**: Bright cyan/pink colors with dark backgrounds
@@ -159,13 +162,13 @@ font-family: "Orbitron", monospace;
 
 ### Primary Logo
 
-- **File**: `tradair-logo-horizontal-white-text-no-bg.png`
+- **File**: `traken-logo-horizontal-white-text-no-bg.png`
 - **Usage**: Dark backgrounds, hero sections
 - **Minimum Size**: 120px width
 
 ### Secondary Logo
 
-- **File**: `tradair-logo-horizontal-black-text-no-bg.png`
+- **File**: `traken-logo-horizontal-black-text-no-bg.png`
 - **Usage**: Light backgrounds, professional contexts
 - **Minimum Size**: 120px width
 
@@ -189,35 +192,36 @@ font-family: "Orbitron", monospace;
 
 #### Primary Button
 
-- **Background**: Purple gradient (`#8B5CF6` to `#A855F7`)
+- **Background**: Violet → Magenta gradient (`#8A3CFF` → `#E45EFF`)
 - **Text**: White, 600 weight
-- **Border Radius**: 8px
+- **Border Radius**: 10–14px
 - **Padding**: 12px 24px
-- **Hover**: Slight scale (1.05) + deeper shadow
+- **Shadow/Glow**: `0 0 40px rgba(138,60,255,0.35)`
+- **Hover**: Slight scale (1.05) + intensified glow
 
 #### Secondary Button
 
 - **Background**: Transparent
-- **Border**: 2px solid `#8B5CF6`
-- **Text**: `#8B5CF6`, 600 weight
-- **Border Radius**: 8px
+- **Border**: 2px solid `#8A3CFF`
+- **Text**: `#8A3CFF`, 600 weight
+- **Border Radius**: 10–14px
 - **Padding**: 10px 22px
-- **Hover**: Fill with purple background
+- **Hover**: Soft fill with `#2B0B65` + outer glow
 
 #### Cyberpunk Button
 
-- **Background**: Black with neon border
-- **Border**: 2px solid neon cyan/pink
+- **Background**: Deep space with neon border
+- **Border**: 2px solid neon cyan or magenta
 - **Text**: Neon colored with glow effect
 - **Animation**: Subtle pulsing glow
 
 ### Cards
 
-- **Background**: White with subtle shadow
+- **Background**: Translucent deep‑purple surface `rgba(18, 12, 35, 0.6)` with `backdrop-filter: blur(8px)`
 - **Border Radius**: 16px
-- **Shadow**: `0 4px 20px rgba(139, 92, 246, 0.1)`
+- **Shadow/Glow**: `0 10px 40px rgba(138, 60, 255, 0.15)`
 - **Padding**: 24px
-- **Border**: Optional 1px solid `#E2E8F0`
+- **Border**: 1px solid `rgba(138,60,255,0.25)` (optional)
 
 ### Icons
 
@@ -253,6 +257,8 @@ font-family: "Orbitron", monospace;
 - **Smooth Flowing Glow**: Continuous neon energy patterns, never flickering
 - **Neural Network Pulses**: Gentle pulsing lights that simulate AI brain activity
 - **Quantum Field Effects**: Smooth gradient waves and energy flows
+- **Curved Radial Grid**: Low‑opacity grid (`#3B2A66` @ 12–18%) subtly rotates or parallax‑moves
+- **Wireframe Globes & Orbs**: Slow drift/parallax, very soft inner glow
 - **NO Glitch Effects**: Avoid any jarring, flickering, or chaotic visual disturbances
 
 ### Hover Effects
@@ -275,6 +281,14 @@ font-family: "Orbitron", monospace;
 - **Scroll-triggered**: Fade-in animations for content sections
 - **Performance**: Always prioritize 60fps animations
 - **Smooth Transitions**: All movements should be fluid and continuous
+- **Reduced Motion**: Respect `prefers-reduced-motion` with static backgrounds
+
+### Background Layers (Web)
+
+- **Layer 1 — Gradient**: Deep‑space radial/linear gradient (see palette)
+- **Layer 2 — Grid**: SVG curved grid overlay, stroke `#3B2A66` at 0.12–0.18 opacity
+- **Layer 3 — Orbs/Globes**: SVG or CSS radial‑gradients with blur and screen blend
+- **Layer 4 — Stars**: Small flares with occasional twinkle
 
 ## Accessibility
 
@@ -294,7 +308,7 @@ font-family: "Orbitron", monospace;
 
 ### Do's
 
-- Use purple as the primary brand color across all touchpoints
+- Use electric violet/magenta as primary accents across all touchpoints
 - Maintain consistent spacing using the defined scale
 - Combine clean and cyberpunk themes purposefully
 - Ensure all text meets accessibility contrast requirements
@@ -337,8 +351,8 @@ font-family: "Orbitron", monospace;
 
 **Illustrations**
 
-- `illustrations/hero/` - Large hero section graphics (AI trading scenes, dashboards)
-- `illustrations/backgrounds/` - Pattern overlays (circuits, gradients, neural grids)
+- `illustrations/hero/` - Large hero section graphics (AI trading scenes, dashboards, wireframe globes)
+- `illustrations/backgrounds/` - Pattern overlays (curved radial grids, gradient vignettes, star flares)
 - `illustrations/features/` - Feature showcase graphics (automation, risk management)
 
 ### Usage Guidelines
@@ -351,6 +365,6 @@ font-family: "Orbitron", monospace;
 - **Technology emphasis**: Use `graphics/tech/` and `icons/ai/` for AI credibility
 - **Trading context**: Use `icons/crypto/` for cryptocurrency relevance
 
-All images follow the established color palette and maintain transparent backgrounds for flexible integration.
+All images follow the established color palette and maintain transparent backgrounds for flexible integration. Prefer SVG for grids and wireframes to ensure crisp rendering and lightweight motion.
 
-This style guide ensures consistent branding across all Tradair AI digital properties while maintaining the perfect balance between professional credibility and cutting-edge innovation that appeals to our target audience of day traders and AI enthusiasts.
+This style guide ensures consistent branding across all Traken AI digital properties while maintaining the perfect balance between professional credibility and cutting‑edge innovation that appeals to our target audience of traders and AI enthusiasts.

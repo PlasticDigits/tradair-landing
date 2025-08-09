@@ -10,7 +10,7 @@
 @plugin "flowbite/plugin";
 
 
-/* Custom Tailwind configuration for Tradair */
+/* Custom Tailwind configuration for Traken */
 @theme {
   /* Custom font families from style guide */
   --font-display: 'Azonix', Arial, sans-serif;
@@ -19,10 +19,15 @@
   --font-accent: Orbitron, monospace;
   --font-sans: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
-  /* Primary brand colors */
-  --color-tradair-purple: #8B5CF6;
-  --color-tradair-deep-purple: #7C3AED;
-  --color-tradair-light-purple: #A855F7;
+  /* Traken brand colors */
+  --color-traken-violet: #8A3CFF; /* Electric Violet */
+  --color-traken-magenta: #E45EFF; /* Magenta Glow */
+  --color-traken-lavender: #C27EFF; /* Soft lavender */
+
+  /* Backward-compatible aliases (will be removed after full refactor) */
+  --color-tradair-purple: #8A3CFF;
+  --color-tradair-deep-purple: #2B0B65;
+  --color-tradair-light-purple: #C27EFF;
   
   /* Secondary colors */
   --color-neon-cyan: #00D4FF;
@@ -34,7 +39,9 @@
   --color-light-gray: #F8FAFC;
   --color-medium-gray: #64748B;
   --color-dark-gray: #1E293B;
-  --color-cyber-black: #0A0A0A;
+  --color-cyber-black: #0B0814; /* deep space */
+  --color-cosmic-indigo: #2B0B65;
+  --color-grid-stroke: #3B2A66;
   
   /* Custom spacing scale */
   --spacing-xs: 4px;
@@ -46,9 +53,9 @@
   --spacing-3xl: 64px;
   
   /* Typography scale */
-  --font-size-brand-hero: 3.5rem;
+  --font-size-brand-hero: clamp(2.5rem, 6vw, 5.75rem);
   --font-size-brand-hero-mobile: 2.5rem;
-  --font-size-major-heading: 2.25rem;
+  --font-size-major-heading: clamp(1.75rem, 3.2vw, 2.5rem);
   --font-size-major-heading-mobile: 1.875rem;
   --font-size-section-header: 1.5rem;
   --font-size-body: 1rem;
@@ -66,6 +73,10 @@
 
 /* Custom utility classes for cyberpunk effects */
 @layer utilities {
+  /* Ensure anchored sections sit below fixed header */
+  .scroll-offset {
+    scroll-margin-top: 84px;
+  }
   .text-glow {
     text-shadow: 0 0 10px currentColor;
   }
@@ -84,12 +95,12 @@
   }
   
   /* Background gradients */
-  .bg-purple-gradient {
-    background-image: linear-gradient(to right, #8B5CF6, #A855F7);
+  .bg-violet-magenta-gradient {
+    background-image: linear-gradient(135deg, #8A3CFF, #E45EFF);
   }
   
   .bg-cyber-gradient {
-    background-image: linear-gradient(to bottom, #0A0A0A, #1A1A2E);
+    background-image: linear-gradient(to bottom, #0B0814, #2B0B65);
   }
   
   .bg-neon-glow {
@@ -109,8 +120,8 @@
     box-shadow: 0 0 10px #FF00FF;
   }
   
-  .shadow-purple-glow {
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+  .shadow-traken-glow {
+    box-shadow: 0 0 40px rgba(138, 60, 255, 0.35);
   }
   
   /* Custom animations */

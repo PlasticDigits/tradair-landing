@@ -12,9 +12,15 @@ const CyberGlow = () => {
     let time = 0;
 
     const setCanvasSize = () => {
-      // Ensure canvas covers the full page
-      canvas.width = window.innerWidth;
-      canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
+      // Ensure canvas covers the full page and is crisp on HiDPI
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const width = window.innerWidth;
+      const height = Math.max(window.innerHeight, document.body.scrollHeight);
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
     
     setCanvasSize();
@@ -40,32 +46,39 @@ const CyberGlow = () => {
     // Generate smooth flowing energy waves that repeat periodically
     const drawEnergyWaves = () => {
       ctx.globalCompositeOperation = 'screen';
-      
       // Wave repetition cycle - creates periods of waves with breaks
-      const wavePhase = (time * 0.005) % (Math.PI * 3); // Complete cycle every ~1885 time units
-      const waveIntensity = Math.max(0, Math.sin(wavePhase * 0.8)) * 0.8 + 0.2; // Periodic intensity with minimum baseline
-      
-      if (waveIntensity > 0.15) { // Only draw waves during active periods
-        // Create flowing wave patterns
-        for (let i = 0; i < 3; i++) {
-          ctx.beginPath();
-          ctx.strokeStyle = i === 0 ? `rgba(139, 92, 246, ${0.1 * waveIntensity})` : 
-                           i === 1 ? `rgba(0, 212, 255, ${0.08 * waveIntensity})` : 
-                                     `rgba(255, 0, 255, ${0.06 * waveIntensity})`;
-          ctx.lineWidth = 2;
-          
-          for (let x = 0; x <= canvas.width; x += 10) {
-            const y = canvas.height / 2 + 
-                     Math.sin((x + time * 2) * 0.01 + i * Math.PI * 0.67) * 50 * waveIntensity +
-                     Math.sin((x + time * 3) * 0.005 + i * Math.PI * 0.33) * 30 * waveIntensity;
-            
-            if (x === 0) {
-              ctx.moveTo(x, y);
-            } else {
-              ctx.lineTo(x, y);
+      const wavePhase = (time * 0.004) % (Math.PI * 4);
+      const phaseOffset = Math.sin(time * 0.002) * 0.5;
+      const waveIntensity = Math.max(0, Math.sin(wavePhase * 0.6 + phaseOffset)) * 0.8 + 0.2;
+
+      if (waveIntensity > 0.12) {
+        // Repeat bands every N px so waves are visible throughout the page
+        const bandSpacing = Math.max(360, Math.min(520, canvas.height * 0.2));
+        const numBands = Math.ceil(canvas.height / bandSpacing) + 1;
+        const ampBase = Math.max(30, Math.min(120, bandSpacing * 0.18)) * waveIntensity;
+        const step = 5;
+
+        for (let b = -1; b < numBands; b++) {
+          const baseY = b * bandSpacing + bandSpacing * 0.5;
+          for (let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            const color = i === 0
+              ? `rgba(138, 60, 255, ${0.10 * waveIntensity})`
+              : i === 1
+              ? `rgba(0, 212, 255, ${0.085 * waveIntensity})`
+              : `rgba(228, 94, 255, ${0.07 * waveIntensity})`;
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1.2;
+
+            for (let x = 0; x <= canvas.width; x += step) {
+              const y = baseY
+                + Math.sin((x + time * 1.3) * 0.012 + i) * ampBase
+                + Math.sin((x + time * 2.1) * 0.006 + i * 0.7) * (ampBase * 0.6);
+              if (x === 0) ctx.moveTo(x, y);
+              else ctx.lineTo(x, y);
             }
+            ctx.stroke();
           }
-          ctx.stroke();
         }
       }
     };

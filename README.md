@@ -1,8 +1,8 @@
-# 🤖 Tradair AI - Revolutionizing Cryptocurrency Trading
+# 🤖 Traken AI - Next‑Generation Trading Intelligence
 
 **Where Artificial Intelligence meets Intelligent Trading**
 
-Tradair AI is the next-generation cryptocurrency trading platform that combines cutting-edge artificial intelligence with conversational ease through Telegram. Our intelligent chatbot delivers daily market insights, smart trading recommendations, and automated trading capabilities directly in your messaging app, giving traders the edge they need in today's volatile crypto markets.
+Traken AI is the next-generation trading intelligence platform. It combines cutting-edge AI with a conversational interface to deliver daily market insights, smart recommendations, and automated trading capabilities directly through Telegram.
 
 ## 🚀 What Makes Us Different
 
@@ -56,7 +56,7 @@ Set your parameters through chat and let our AI trade for you:
 
 ## 🎨 Design & Branding
 
-This project follows the **[Tradair AI Style Guide](./STYLE_GUIDE.md)** which defines our visual identity, color palette, typography, and component standards. The design balances professional credibility with cutting-edge innovation, appealing to both experienced traders and AI enthusiasts.
+This project follows the **[Traken AI Style Guide](./STYLE_GUIDE.md)** which defines our visual identity, color palette, typography, and component standards.
 
 **Key Design Themes:**
 
@@ -113,12 +113,13 @@ This project follows the **[Tradair AI Style Guide](./STYLE_GUIDE.md)** which de
 - **Subscription Burns**: Monthly auto-burn of subscription revenue increases token scarcity
 - **Performance Burns**: Milestone-based burns as we hit user growth targets
 
-_The more successful Tradair AI becomes, the more valuable TRADAIR tokens become through reduced supply and increased utility demand._
+_The more successful Traken AI becomes, the more valuable TRADAIR tokens become through reduced supply and increased utility demand._
 
 ## 🔗 Important Links
 
-- **Website**: [tradair.app](https://tradair.app)
+- **Website**: [traken.xyz](https://traken.xyz)
 - **Registration**: [Early Access Form](https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform)
+- **X (Twitter)**: [@trakenai](https://x.com/trakenai)
 - **Telegram**: [@tradairofficial](https://t.me/tradairofficial)
 
 ## 🤝 Contributing
@@ -147,12 +148,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Need help or have questions?
 
+- Follow us on [X](https://x.com/trakenai)
 - Join our [Telegram community](https://t.me/tradairofficial)
-- Email us at support@tradair.app
+- Email us at support@traken.xyz
 - Check our documentation and FAQ
 
 ---
 
-**Tradair AI** - _Innovating future trading with AI_
+**Traken AI** - _Innovating future trading with AI_
 
 _Trade Better. Chat Smarter. Stay Ahead._

@@ -101,12 +101,7 @@ const Pricing = () => {
         aria-label="Pricing plans and token benefits"
       >
         
-        {/* Background Video */}
-        <BackgroundVideo 
-          src="/videos/chart-green-uparrows-slow.mp4"
-          opacity={0.08}
-          filter="blur(1px) contrast(0.7) brightness(0.4) saturate(0.8)"
-        />
+        {/* Background video removed for cleaner look */}
 
         <Container size="4" className="relative z-10">
           

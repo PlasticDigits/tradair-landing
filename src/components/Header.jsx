@@ -5,6 +5,7 @@ import { Flex, Container, Button, Link, Text, Box } from '@radix-ui/themes';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,12 +15,22 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // JS guard to ensure hamburger only shows < lg
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 1023px)');
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navLinks = [
     { href: '#features', label: 'Features' },
     { href: '#about', label: 'About' },
     { href: '#pricing', label: 'Pricing' },
+    { href: 'https://x.com/trakenai', label: 'X', external: true },
     { href: 'https://t.me/tradairofficial', label: 'Telegram', external: true },
   ];
 
@@ -39,13 +50,13 @@ const Header = () => {
             {/* Logo */}
             <Box className="flex-shrink-0">
               <img 
-                src="/branding-images/tradair-logo-horizontal-white-text-no-bg.png" 
-                alt="Tradair AI"
+                src="/branding-images/traken-logo-horizontal-white-text-no-bg.png" 
+                alt="Traken AI"
                 className="h-8 lg:h-10 w-auto"
               />
             </Box>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation (>= lg) */}
             <Flex 
               align="center" 
               gap="6" 
@@ -56,7 +67,7 @@ const Header = () => {
                   key={link.label}
                   href={link.href}
                   target={link.external ? '_blank' : undefined}
-                  className="font-interface text-white hover:text-tradair-purple transition-colors duration-300"
+                  className="font-interface text-white hover:text-traken-violet transition-colors duration-300"
                   weight="medium"
                 >
                   {link.label}
@@ -64,7 +75,7 @@ const Header = () => {
               ))}
             </Flex>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons (>= lg) */}
             <Flex 
               align="center" 
               gap="3" 
@@ -73,7 +84,7 @@ const Header = () => {
               <Button
                 asChild
                 size="3"
-                className="bg-purple-gradient hover:scale-105 hover:shadow-purple-glow transition-all duration-300"
+                className="bg-violet-magenta-gradient hover:scale-105 hover:shadow-traken-glow transition-all duration-300"
               >
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform"
@@ -88,7 +99,7 @@ const Header = () => {
                 asChild
                 variant="outline"
                 size="3"
-                className="border-2 border-tradair-purple text-tradair-purple hover:bg-tradair-purple hover:text-white transition-all duration-300"
+                className="border-2 border-traken-violet text-traken-violet hover:bg-traken-violet hover:text-white transition-all duration-300"
               >
                 <a
                   href="https://t.me/tradair_bot"
@@ -100,30 +111,32 @@ const Header = () => {
               </Button>
             </Flex>
 
-            {/* Mobile menu button */}
-            <Box className="lg:hidden">
-              <Button
-                variant="ghost"
-                size="3"
-                onClick={toggleMenu}
-                className="text-white hover:text-tradair-purple transition-colors duration-300"
-                aria-label="Toggle mobile menu"
-              >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </Button>
-            </Box>
+            {/* Mobile menu button (< lg) */}
+            {isMobile && (
+              <Box className="lg:hidden">
+                <Button
+                  variant="ghost"
+                  size="3"
+                  onClick={toggleMenu}
+                  className="text-white hover:text-traken-violet transition-colors duration-300"
+                  aria-label="Toggle mobile menu"
+                >
+                  {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </Button>
+              </Box>
+            )}
           </Flex>
 
           {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <Box className="lg:hidden absolute top-full left-0 right-0 bg-cyber-black/95 backdrop-blur-lg border-t border-tradair-purple/20">
+          {isMobile && isMenuOpen && (
+            <Box className="lg:hidden absolute top-full left-0 right-0 bg-cyber-black/95 backdrop-blur-lg border-t border-traken-violet/20">
               <Flex direction="column" p="4" gap="4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
-                    className="font-interface text-white hover:text-tradair-purple transition-colors duration-300 py-2"
+                    className="font-interface text-white hover:text-traken-violet transition-colors duration-300 py-2"
                     weight="medium"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -135,7 +148,7 @@ const Header = () => {
                   <Button
                     asChild
                     size="3"
-                    className="bg-purple-gradient transition-all duration-300"
+                    className="bg-violet-magenta-gradient transition-all duration-300"
                   >
                     <a
                       href="https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform"
@@ -151,7 +164,7 @@ const Header = () => {
                     asChild
                     variant="outline"
                     size="3"
-                    className="border-2 border-tradair-purple text-tradair-purple transition-all duration-300"
+                    className="border-2 border-traken-violet text-traken-violet transition-all duration-300"
                   >
                     <a
                       href="https://t.me/tradair_bot"

@@ -7,6 +7,7 @@ const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const trailRef = useRef([]);
   const trailElements = useRef([]);
+  const rafId = useRef(null);
   
   useEffect(() => {
     const checkDevice = () => {
@@ -25,13 +26,9 @@ const CustomCursor = () => {
 
     const updateMousePosition = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
-      
-      // Add new trail position
-      trailRef.current.push({ x: e.clientX, y: e.clientY, id: Date.now() });
-      
-      // Keep only last 10 trail positions
-      if (trailRef.current.length > 10) {
-        trailRef.current.shift();
+      if (trailRef.current.length === 0) {
+        // seed positions on first move to avoid stuck dots
+        trailRef.current = Array.from({ length: 12 }, () => ({ x: e.clientX, y: e.clientY }));
       }
     };
 
@@ -59,21 +56,47 @@ const CustomCursor = () => {
     };
   }, [isDesktop]);
 
-  // Update trail elements
+  // Animate trail using RAF + lerp for smooth tail
   useEffect(() => {
     if (!isDesktop) return;
+    const lerp = (a, b, t) => a + (b - a) * t;
 
-    trailElements.current.forEach((element, index) => {
-      if (element && trailRef.current[index]) {
-        const position = trailRef.current[index];
-        const opacity = (index + 1) / trailRef.current.length * 0.6;
-        
-        element.style.left = `${position.x - 2}px`;
-        element.style.top = `${position.y - 2}px`;
-        element.style.opacity = opacity;
+    const tick = () => {
+      // decay target follows mouse
+      const speed = 0.25;
+      if (trailRef.current.length === 0) {
+        trailRef.current = Array.from({ length: 12 }, () => ({ x: mousePosition.x, y: mousePosition.y }));
       }
-    });
-  }, [mousePosition, isDesktop]);
+
+      // first element chases mouse, others chase the previous element
+      const points = trailRef.current;
+      if (points.length) {
+        points[0].x = lerp(points[0].x, mousePosition.x, speed);
+        points[0].y = lerp(points[0].y, mousePosition.y, speed);
+        for (let i = 1; i < points.length; i++) {
+          points[i].x = lerp(points[i].x, points[i - 1].x, 0.35);
+          points[i].y = lerp(points[i].y, points[i - 1].y, 0.35);
+        }
+      }
+
+      // paint
+      trailElements.current.forEach((el, i) => {
+        if (!el || !points[i]) return;
+        const p = points[i];
+        const opacity = Math.max(0, 0.7 - i * 0.06);
+        const scale = Math.max(0.4, 1 - i * 0.04);
+        el.style.transform = `translate(${p.x - 2}px, ${p.y - 2}px) scale(${scale})`;
+        el.style.opacity = String(opacity);
+      });
+
+      rafId.current = requestAnimationFrame(tick);
+    };
+
+    rafId.current = requestAnimationFrame(tick);
+    return () => {
+      if (rafId.current) cancelAnimationFrame(rafId.current);
+    };
+  }, [isDesktop, mousePosition.x, mousePosition.y]);
 
   // Only render on desktop devices
   if (!isDesktop) return null;
@@ -90,14 +113,12 @@ const CustomCursor = () => {
       />
       
       {/* Trail elements */}
-      {Array.from({ length: 10 }, (_, index) => (
+      {Array.from({ length: 12 }, (_, index) => (
         <div
           key={index}
           ref={(el) => (trailElements.current[index] = el)}
           className="custom-cursor-trail"
-          style={{
-            animationDelay: `${index * 0.05}s`,
-          }}
+          style={{}}
         />
       ))}
     </>

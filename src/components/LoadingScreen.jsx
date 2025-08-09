@@ -51,7 +51,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
     <div 
       className={`loading-screen ${!isVisible ? 'hidden' : ''}`}
       role="dialog"
-      aria-label="Loading Tradair AI application"
+      aria-label="Loading Traken AI application"
       aria-live="polite"
     >
       {/* Matrix background effect */}
@@ -77,8 +77,8 @@ const LoadingScreen = ({ onLoadingComplete }) => {
 
       {/* Logo */}
       <img 
-        src="/branding-images/tradair-logo-horizontal-white-text-no-bg.png" 
-        alt="Tradair AI"
+        src="/branding-images/traken-logo-horizontal-white-text-no-bg.png" 
+        alt="Traken AI"
         className="loading-logo"
       />
 
@@ -106,7 +106,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
           {Array.from({ length: 3 }, (_, i) => (
             <div
               key={i}
-              className="w-2 h-2 bg-tradair-purple rounded-full animate-bounce"
+              className="w-2 h-2 bg-traken-violet rounded-full animate-bounce"
               style={{ animationDelay: `${i * 0.1}s` }}
             />
           ))}

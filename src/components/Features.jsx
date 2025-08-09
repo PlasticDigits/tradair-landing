@@ -59,12 +59,7 @@ const Features = () => {
         aria-label="Platform features and capabilities"
       >
         
-        {/* Background Video */}
-        <BackgroundVideo 
-          src="/videos/loop-network-energy-tech-b&w.mp4"
-          opacity={0.12}
-          filter="blur(1px) contrast(0.6) brightness(0.4) grayscale(0.3)"
-        />
+        {/* Background Video - replaced by subtle cosmic background; remove noisy video */}
 
         <Container size="4" className="relative z-10">
           

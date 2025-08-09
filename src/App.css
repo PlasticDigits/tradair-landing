@@ -37,7 +37,7 @@ html {
 
 /* Focus visible for better accessibility */
 :focus-visible {
-  outline: 2px solid #8B5CF6;
+  outline: 2px solid #8A3CFF;
   outline-offset: 2px;
 }
 
@@ -45,8 +45,8 @@ html {
 
 /* Custom cursor - only on desktop */
 @media (hover: hover) and (pointer: fine) {
-  * {
-    cursor: none;
+  html, body, a, button, [role="button"], input, textarea {
+    cursor: none !important;
   }
 }
 
@@ -54,10 +54,10 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  background: linear-gradient(45deg, #8B5CF6, #00D4FF);
+  background: linear-gradient(45deg, #8A3CFF, #E45EFF);
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.1s ease;
@@ -70,13 +70,14 @@ html {
 
 .custom-cursor-trail {
   position: fixed;
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #8B5CF6;
+  background: #8A3CFF;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.6;
+  opacity: 0.0;
+  transition: opacity 0.2s ease;
 }
 
 /* Parallax container */
@@ -261,6 +262,7 @@ html {
   justify-content: center;
   z-index: 10000;
   transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  pointer-events: all;
 }
 
 /* Main content fade-in animation */
@@ -281,6 +283,7 @@ html {
 .loading-screen.hidden {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
 .loading-logo {

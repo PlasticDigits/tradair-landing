@@ -11,6 +11,8 @@ import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
 import ScrollAnimations from './components/ScrollAnimations';
 import CyberGlow from './components/CyberGlow';
+import Roadmap from './components/Roadmap';
+import CosmicBackground from './components/CosmicBackground';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +44,9 @@ function App() {
             {/* Custom Cursor */}
             <CustomCursor />
             
-            {/* Cyber Glow Background */}
+            {/* Background layers */}
+            <CosmicBackground />
+            {/* Disable heavy canvas when prefers-reduced-motion */}
             <CyberGlow />
             
             {/* Scroll Animations Handler */}
@@ -50,8 +54,9 @@ function App() {
             
             {/* Main Content */}
             <Header />
-            <main id="main-content">
+            <main id="main-content" style={{paddingTop: '84px'}}>
               <Hero />
+              <Roadmap />
               <Features />
               <About />
               <Pricing />

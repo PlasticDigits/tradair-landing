@@ -30,12 +30,7 @@ const About = () => {
         aria-label="About Tradair AI company and technology"
       >
         
-        {/* Background Video */}
-        <BackgroundVideo 
-          src="/videos/loop-network-energy-tech-b&w.mp4"
-          opacity={0.1}
-          filter="blur(1.2px) contrast(0.5) brightness(0.35) grayscale(0.5)"
-        />
+        {/* Background video removed for cleaner look; cosmic background provides ambience */}
 
         <Container size="4" className="relative z-10">
           <Grid columns={{ initial: "1", lg: "2" }} gap="9" align="center">
@@ -116,30 +111,30 @@ const About = () => {
                 {/* Main Dashboard Image */}
                 <Box className="relative bg-gradient-to-br from-tradair-purple/20 to-neon-cyan/10 backdrop-blur-sm border border-tradair-purple/30 rounded-2xl p-8">
                   <img 
-                    src="/images/illustrations/hero/crypto-dashboard-hero.svg" 
-                    alt="Tradair AI Dashboard"
-                    className="w-full drop-shadow-2xl"
+                    src="/images/ai-trading-hero-transparency.png" 
+                    alt="Traken AI Dashboard"
+                    className="w-full h-auto drop-shadow-2xl object-contain"
                   />
                 </Box>
 
                 {/* Floating Tech Elements */}
                 <Box className="absolute -top-6 -right-6">
                   <Box className="w-24 h-24 bg-gradient-to-br from-neon-cyan/20 to-transparent backdrop-blur-sm border border-neon-cyan/30 rounded-2xl p-4 animate-float">
-                    <img 
-                      src="/images/graphics/tech/neural-network.svg" 
-                      alt="Neural Network"
-                      className="w-full h-full object-contain"
-                    />
+                  <img 
+                    src="/images/traken-network-circle.png" 
+                    alt="Traken Network"
+                    className="w-full h-full object-contain"
+                  />
                   </Box>
                 </Box>
 
                 <Box className="absolute -bottom-8 -left-8">
                   <Box className="w-20 h-20 bg-gradient-to-br from-neon-pink/20 to-transparent backdrop-blur-sm border border-neon-pink/30 rounded-2xl p-4 animate-float" style={{animationDelay: '1s'}}>
-                    <img 
-                      src="/images/graphics/tech/ai-chip.svg" 
-                      alt="AI Chip"
-                      className="w-full h-full object-contain"
-                    />
+                  <img 
+                    src="/images/traken-chip.png" 
+                    alt="AI Chip"
+                    className="w-full h-full object-contain"
+                  />
                   </Box>
                 </Box>
 
