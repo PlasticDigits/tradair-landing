@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Flex, Container, Button, Link, Text, Box } from '@radix-ui/themes';
+import { LINKS } from '../constants/links';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,11 +28,11 @@ const Header = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navLinks = [
-    { href: '#features', label: 'Features' },
-    { href: '#about', label: 'About' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: 'https://x.com/trakenai', label: 'X', external: true },
-    { href: 'https://t.me/tradairofficial', label: 'Telegram', external: true },
+    { href: LINKS.SECTION_FEATURES, label: 'Features' },
+    { href: LINKS.SECTION_ABOUT, label: 'About' },
+    { href: LINKS.SECTION_PRICING, label: 'Pricing' },
+    { href: LINKS.X, label: 'X', external: true },
+    { href: LINKS.TELEGRAM_COMMUNITY, label: 'Telegram', external: true },
   ];
 
   return (
@@ -48,7 +49,7 @@ const Header = () => {
           <Flex align="center" justify="between" py="4" className="h-16 lg:h-20">
             
             {/* Logo */}
-            <Box className="flex-shrink-0">
+            <Box className="flex-shrink-0" style={{ marginRight: '1em' }}>
               <img 
                 src="/branding-images/traken-logo-horizontal-white-text-no-bg.png" 
                 alt="Traken AI"
@@ -80,6 +81,9 @@ const Header = () => {
               align="center" 
               gap="3" 
               className="hidden lg:flex"
+              style={{
+                marginLeft:'1em'
+              }}
             >
               <Button
                 asChild
@@ -87,7 +91,7 @@ const Header = () => {
                 className="bg-violet-magenta-gradient hover:scale-105 hover:shadow-traken-glow transition-all duration-300"
               >
                 <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform"
+                  href={LINKS.PRIVATE_SALE_FORM}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -102,7 +106,7 @@ const Header = () => {
                 className="border-2 border-traken-violet text-traken-violet hover:bg-traken-violet hover:text-white transition-all duration-300"
               >
                 <a
-                  href="https://t.me/tradair_bot"
+                  href={LINKS.TELEGRAM_BOT}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -113,7 +117,7 @@ const Header = () => {
 
             {/* Mobile menu button (< lg) */}
             {isMobile && (
-              <Box className="lg:hidden">
+              <Box className="lg:hidden ml-auto">
                 <Button
                   variant="ghost"
                   size="3"
@@ -130,13 +134,13 @@ const Header = () => {
           {/* Mobile Navigation */}
           {isMobile && isMenuOpen && (
             <Box className="lg:hidden absolute top-full left-0 right-0 bg-cyber-black/95 backdrop-blur-lg border-t border-traken-violet/20">
-              <Flex direction="column" p="4" gap="4">
+              <Flex direction="column" p="4" gap="2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.label}
                     href={link.href}
                     target={link.external ? '_blank' : undefined}
-                    className="font-interface text-white hover:text-traken-violet transition-colors duration-300 py-2"
+                    className="font-interface text-white hover:text-traken-violet transition-colors duration-300 py-2 text-lg"
                     weight="medium"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -144,14 +148,14 @@ const Header = () => {
                   </Link>
                 ))}
                 
-                <Flex direction="column" gap="3" pt="4">
+                <Flex direction="column" gap="3" pt="2">
                   <Button
                     asChild
                     size="3"
-                    className="bg-violet-magenta-gradient transition-all duration-300"
+                    className="bg-violet-magenta-gradient transition-all duration-300 w-full"
                   >
                     <a
-                      href="https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform"
+                      href={LINKS.PRIVATE_SALE_FORM}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsMenuOpen(false)}
@@ -164,10 +168,10 @@ const Header = () => {
                     asChild
                     variant="outline"
                     size="3"
-                    className="border-2 border-traken-violet text-traken-violet transition-all duration-300"
+                    className="border-2 border-traken-violet text-traken-violet transition-all duration-300 w-full"
                   >
                     <a
-                      href="https://t.me/tradair_bot"
+                      href={LINKS.TELEGRAM_BOT}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsMenuOpen(false)}

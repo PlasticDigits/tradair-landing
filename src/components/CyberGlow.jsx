@@ -12,12 +12,18 @@ const CyberGlow = () => {
     let time = 0;
 
     const setCanvasSize = () => {
-      // Ensure canvas covers the full page and is crisp on HiDPI
+      // Ensure canvas covers the viewport and is crisp on HiDPI, without exceeding safe limits
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const width = window.innerWidth;
-      const height = Math.max(window.innerHeight, document.body.scrollHeight);
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
+      const height = window.innerHeight; // use viewport height, not full document height
+
+      // Clamp backing-store dimensions to avoid exceeding browser max canvas size
+      const MAX_BACKING_DIMENSION = 8192; // safe upper bound across browsers
+      const targetWidth = Math.min(Math.floor(width * dpr), MAX_BACKING_DIMENSION);
+      const targetHeight = Math.min(Math.floor(height * dpr), MAX_BACKING_DIMENSION);
+
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);

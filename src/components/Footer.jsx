@@ -1,20 +1,20 @@
 import React from 'react';
 import { Send, MessageSquare, Globe, Shield, Heart } from 'lucide-react';
 import { Container, Grid, Flex, Box, Text, Heading, Button, Link } from '@radix-ui/themes';
-import BackgroundVideo from './BackgroundVideo';
+import { LINKS } from '../constants/links';
 
 const Footer = () => {
   const quickLinks = [
-    { href: '#features', label: 'Features' },
-    { href: '#about', label: 'About' },
-    { href: '#pricing', label: 'Pricing' },
-    { href: 'https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform', label: 'Private Sale', external: true }
+    { href: LINKS.SECTION_FEATURES, label: 'Features' },
+    { href: LINKS.SECTION_ABOUT, label: 'About' },
+    { href: LINKS.SECTION_PRICING, label: 'Pricing' },
+    { href: LINKS.PRIVATE_SALE_FORM, label: 'Private Sale', external: true }
   ];
 
   const resources = [
-    { href: 'https://x.com/trakenai', label: 'X (Twitter)', external: true },
-    { href: 'https://t.me/tradairofficial', label: 'Telegram Community', external: true },
-    { href: 'https://t.me/tradair_bot', label: 'Trading Bot', external: true },
+    { href: LINKS.X, label: 'X (Twitter)', external: true },
+    { href: LINKS.TELEGRAM_COMMUNITY, label: 'Telegram Community', external: true },
+    { href: LINKS.TELEGRAM_BOT, label: 'Trading Bot', external: true },
     { href: '#', label: 'Documentation' },
     { href: '#', label: 'API Reference' }
   ];
@@ -32,7 +32,9 @@ const Footer = () => {
         
         {/* Background video removed for cleaner look; cosmic background handles ambiance */}
 
-        <Container size="4" className="relative z-10">
+        <Container size="4" className="relative z-10" px="4" style={{
+          paddingBottom:'2em'
+        }}>
           
           {/* Main Footer Content */}
           <Box py="8">
@@ -46,36 +48,16 @@ const Footer = () => {
                     alt="Traken AI"
                     className="h-8 w-auto mb-4"
                   />
-                  <Text size="3" className="font-body text-medium-gray leading-relaxed max-w-md">
+                  <Text size="3" className="font-body text-medium-gray leading-relaxed max-w-md text-base sm:text-lg">
                     Revolutionizing cryptocurrency trading with artificial intelligence. 
                     Get daily insights, smart recommendations, and automated trading through our Telegram chatbot.
-                  </Text>
-                </Box>
-
-                {/* Newsletter Signup */}
-                <Box mb="6">
-                  <Heading size="4" weight="bold" className="font-interface text-white mb-4">
-                    Stay Updated
-                  </Heading>
-                  <Flex direction={{ initial: "column", sm: "row" }} gap="3">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="flex-1 px-4 py-3 bg-dark-gray/50 border border-traken-violet/30 rounded-button text-white placeholder-medium-gray focus:outline-none focus:border-traken-violet/60 backdrop-blur-sm"
-                    />
-                    <Button className="px-6 py-3 bg-violet-magenta-gradient text-white font-semibold transition-all duration-300 hover:scale-105 hover:shadow-traken-glow">
-                      <Send className="w-4 h-4" />
-                    </Button>
-                  </Flex>
-                  <Text size="1" className="font-body text-medium-gray mt-2">
-                    Get the latest updates on our AI trading platform and token launch.
                   </Text>
                 </Box>
 
                 {/* Social Links */}
                 <Flex gap="4">
                   <a
-                    href="https://x.com/trakenai"
+                    href={LINKS.X}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-neon-cyan/20 to-neon-cyan/10 border border-neon-cyan/30 rounded-lg text-neon-cyan hover:bg-neon-cyan hover:text-cyber-black transition-all duration-300"
@@ -84,7 +66,7 @@ const Footer = () => {
                     <Send className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://t.me/tradair_bot"
+                    href={LINKS.TELEGRAM_BOT}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-traken-violet/20 to-traken-violet/10 border border-traken-violet/30 rounded-lg text-traken-violet hover:bg-traken-violet hover:text-white transition-all duration-300"
@@ -93,7 +75,7 @@ const Footer = () => {
                     <MessageSquare className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://tradair.app"
+                    href={LINKS.WEBSITE}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-neon-pink/20 to-neon-pink/10 border border-neon-pink/30 rounded-lg text-neon-pink hover:bg-neon-pink hover:text-cyber-black transition-all duration-300"
@@ -145,7 +127,7 @@ const Footer = () => {
           </Box>
 
           {/* Bottom Bar */}
-          <Box className="border-t border-traken-violet/20 py-8">
+          <Box className="border-t border-traken-violet/20 py-8 mb-10">
             <Flex direction={{ initial: "column", lg: "row" }} align="center" justify="between" gap="6">
               
               {/* Copyright */}
@@ -173,7 +155,7 @@ const Footer = () => {
               </Flex>
 
               {/* Security Badge */}
-              <Flex align="center" gap="2" className="text-neon-cyan">
+              <Flex align="center" gap="2" className="text-neon-cyan mb-10">
                 <Shield className="w-4 h-4" />
                 <Text size="2" className="font-body">Audited & Secure</Text>
               </Flex>

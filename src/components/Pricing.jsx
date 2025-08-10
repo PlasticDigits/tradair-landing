@@ -1,7 +1,7 @@
 import React from 'react';
 import { Check, Zap, Crown, Building, ArrowRight, Flame } from 'lucide-react';
-import BackgroundVideo from './BackgroundVideo';
 import { Section, Container, Grid, Flex, Box, Text, Heading, Badge, Card, Button } from '@radix-ui/themes';
+import { LINKS } from '../constants/links';
 
 const Pricing = () => {
   const plans = [
@@ -103,7 +103,7 @@ const Pricing = () => {
         
         {/* Background video removed for cleaner look */}
 
-        <Container size="4" className="relative z-10">
+        <Container size="4" className="relative z-10" px="4">
           
           {/* Section Header */}
           <Flex direction="column" align="center" mb="8" className="text-center">
@@ -119,7 +119,7 @@ const Pricing = () => {
             <Heading 
               size="8" 
               mb="6"
-              className="font-display text-white"
+              className="font-display text-white text-center text-3xl sm:text-5xl lg:text-6xl"
             >
               Choose Your <Text className="text-glow-cyan text-neon-cyan">Trading</Text>{' '}
               <Text className="bg-purple-gradient bg-clip-text text-transparent">Advantage</Text>
@@ -127,7 +127,7 @@ const Pricing = () => {
             
             <Text 
               size="4" 
-              className="font-body text-medium-gray max-w-3xl leading-relaxed"
+              className="font-body text-medium-gray max-w-3xl leading-relaxed text-base sm:text-lg"
             >
               Start with our basic plan or unlock the full power of AI trading with professional and enterprise solutions.
             </Text>
@@ -138,7 +138,7 @@ const Pricing = () => {
             {plans.map((plan, index) => (
               <Box 
                 key={index}
-                className={`relative group reveal interactive-hover ${plan.popular ? 'transform scale-105' : ''}`}
+                className={`relative group reveal interactive-hover ${plan.popular ? 'lg:transform lg:scale-105' : ''}`}
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {/* Popular Badge */}
@@ -170,7 +170,7 @@ const Pricing = () => {
                       </Box>
                     </Flex>
                     
-                    <Heading size="5" className="font-interface text-white mb-2">
+                    <Heading size="5" className="font-interface text-white mb-2 text-xl">
                       {plan.name}
                     </Heading>
                     
@@ -179,11 +179,11 @@ const Pricing = () => {
                     </Text>
                     
                     <Flex direction="column" gap="2" align="center">
-                      <Text size="7" weight="bold" className="font-display text-white">
+                      <Text size="7" weight="bold" className="font-display text-white text-3xl sm:text-4xl">
                         {plan.price}
                         <Text size="4" className="font-body text-medium-gray">/{plan.period}</Text>
                       </Text>
-                      <Text size="2" className="font-body text-neon-cyan">
+                      <Text size="2" className="font-body text-neon-cyan text-xs sm:text-sm">
                         or {plan.annualPrice}/{plan.annualPeriod} (save 17%)
                       </Text>
                     </Flex>
@@ -211,7 +211,7 @@ const Pricing = () => {
                       }`}
                     >
                       <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform"
+                        href={LINKS.PRIVATE_SALE_FORM}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -254,27 +254,34 @@ const Pricing = () => {
             </Flex>
 
             {/* Benefits Grid */}
-            <Grid columns={{ initial: "1", md: "2", lg: "4" }} gap="6" mb="6">
-              {tokenBenefits.map((benefit, index) => (
-                <Flex key={index} direction="column" align="center" className="text-center group">
-                  <Flex 
-                    align="center" 
-                    justify="center" 
-                    mb="4"
-                    className="w-12 h-12 rounded-2xl bg-gradient-to-br from-tradair-purple/20 to-neon-cyan/10 border border-tradair-purple/30 group-hover:scale-110 transition-transform duration-300"
-                  >
-                    <Box className="text-tradair-purple">
-                      {benefit.icon}
-                    </Box>
+            <Grid columns={{ initial: "1", lg: "2" }} gap="6" mb="6">
+              <img 
+                src="/images/skijump-over-scams.png" 
+                alt="A skier jumping over scams"
+                className="w-full h-full object-cover rounded-lg"
+              />
+              <Grid columns={{ initial: "1", md: "2" }} gap="6">
+                {tokenBenefits.map((benefit, index) => (
+                  <Flex key={index} direction="column" align="center" className="text-center group">
+                    <Flex 
+                      align="center" 
+                      justify="center" 
+                      mb="4"
+                      className="w-12 h-12 rounded-2xl bg-gradient-to-br from-tradair-purple/20 to-neon-cyan/10 border border-tradair-purple/30 group-hover:scale-110 transition-transform duration-300"
+                    >
+                      <Box className="text-tradair-purple">
+                        {benefit.icon}
+                      </Box>
+                    </Flex>
+                    <Heading size="4" weight="bold" className="font-interface text-white mb-2">
+                      {benefit.title}
+                    </Heading>
+                    <Text size="2" className="font-body text-medium-gray">
+                      {benefit.description}
+                    </Text>
                   </Flex>
-                  <Heading size="4" weight="bold" className="font-interface text-white mb-2">
-                    {benefit.title}
-                  </Heading>
-                  <Text size="2" className="font-body text-medium-gray">
-                    {benefit.description}
-                  </Text>
-                </Flex>
-              ))}
+                ))}
+              </Grid>
             </Grid>
 
             {/* Token CTA */}
@@ -285,7 +292,7 @@ const Pricing = () => {
                 className="bg-gradient-to-r from-tradair-purple to-neon-pink text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-purple-glow"
               >
                 <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform"
+                  href={LINKS.PRIVATE_SALE_FORM}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

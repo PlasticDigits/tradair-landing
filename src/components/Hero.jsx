@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Bot, TrendingUp, Zap } from 'lucide-react';
 import { Section, Container, Flex, Grid, Box, Text, Heading, Button, Badge } from '@radix-ui/themes';
-import BackgroundVideo from './BackgroundVideo';
+import { LINKS } from '../constants/links';
 
 const Hero = () => {
   return (
@@ -18,7 +18,7 @@ const Hero = () => {
         {/* Background video removed for cleaner look; relying on cosmic background */}
 
         {/* Content */}
-        <Container size="4" className="relative z-10 pt-28 pb-20">
+        <Container size="4" className="relative z-10 pt-28 pb-20" px="4">
           <Grid columns={{ initial: "1", lg: "2" }} gap={{ initial: '8', lg: '10' }} align="center">
             
             {/* Left Column - Text Content */}
@@ -35,7 +35,7 @@ const Hero = () => {
               {/* Main Headline */}
               <Heading 
                 size="9" 
-                className="font-display text-white mb-6 leading-tight text-center lg:text-left max-w-[800px]"
+                className="font-display text-white mb-6 leading-tight text-center lg:text-left max-w-[800px] text-4xl sm:text-5xl lg:text-7xl text-balance break-words"
               >
                 Where <Text className="text-glow-cyan text-neon-cyan">Artificial Intelligence</Text> meets{' '}
                 <Text className="bg-purple-gradient bg-clip-text text-transparent">Intelligent Trading</Text>
@@ -44,7 +44,7 @@ const Hero = () => {
               {/* Subtitle */}
               <Text 
                 size="5" 
-                className="font-body text-medium-gray mb-8 leading-relaxed max-w-[720px] text-center lg:text-left"
+                className="font-body text-medium-gray mb-8 leading-relaxed max-w-[720px] text-center lg:text-left text-base sm:text-lg"
               >
                 Get daily trading insights, smart recommendations, and automated trading capabilities 
                 delivered directly through our Telegram chatbot. No more guessing – let our AI guide your crypto decisions.
@@ -92,10 +92,10 @@ const Hero = () => {
                 <Button
                   asChild
                   size="4"
-                  className="group bg-violet-magenta-gradient text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-traken-glow"
+                  className="group bg-violet-magenta-gradient text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-traken-glow w-full sm:w-auto"
                 >
                   <a
-                    href="https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform"
+                    href={LINKS.PRIVATE_SALE_FORM}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -108,10 +108,10 @@ const Hero = () => {
                   asChild
                   variant="outline"
                   size="4"
-                  className="group border-2 border-neon-cyan text-neon-cyan font-bold transition-all duration-300 hover:bg-neon-cyan hover:text-cyber-black cyberpunk-border"
+                  className="group border-2 border-neon-cyan text-neon-cyan font-bold transition-all duration-300 hover:bg-neon-cyan hover:text-cyber-black cyberpunk-border w-full sm:w-auto"
                 >
                   <a
-                    href="https://t.me/tradair_bot"
+                    href={LINKS.TELEGRAM_BOT}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -127,7 +127,7 @@ const Hero = () => {
                   Join our growing community:
                 </Text>
                 <a
-                  href="https://x.com/trakenai"
+                  href={LINKS.X}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center text-neon-cyan hover:text-white transition-colors duration-300 font-interface"
@@ -152,21 +152,13 @@ const Hero = () => {
                 <Box className="absolute -top-4 -right-4 w-16 h-16 bg-neon-cyan/20 rounded-full blur-xl animate-pulse parallax-mouse"></Box>
                 <Box className="absolute -bottom-6 -left-6 w-20 h-20 bg-neon-pink/20 rounded-full blur-xl animate-pulse parallax-mouse" style={{animationDelay: '1s'}}></Box>
                 
-                {/* Additional floating tech elements */}
-                <Box className="w-[125px] mx-auto mt-6 animate-float-slow" style={{animationDelay: '2s'}}>
-                  <img 
-                    src="/images/traken-network-circle.png" 
-                    alt="Traken AI Network"
-                    className="w-full h-auto opacity-80"
-                  />
-                </Box>
               </Box>
             </Box>
           </Grid>
         </Container>
 
-        {/* Scroll Indicator */}
-        <Box className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        {/* Scroll Indicator - hidden on very small screens to avoid overlap */}
+        <Box className="hidden sm:block absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
           <Box className="w-1 h-12 bg-gradient-to-b from-traken-violet to-transparent rounded-full animate-pulse"></Box>
         </Box>
       </section>

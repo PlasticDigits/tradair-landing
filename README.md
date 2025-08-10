@@ -47,12 +47,25 @@ Set your parameters through chat and let our AI trade for you:
 - **Insight IQ** - Data analytics and market trends accessible through chat
 - **Real-time Alerts** - Instant Telegram notifications for market opportunities
 
-### Roadmap Features
+### Roadmap
 
-- **Custom Bot Creator** - Design AI agents for trading, alerts, and analysis
-- **Mobile App** - iOS and Android trading companion
-- **Multi-chain Support** - Ethereum, Solana, and other networks
-- **Advanced Analytics** - On-chain monitoring and wallet behavior analysis
+#### Phase 01 — Foundation & Launch (Months 0–3)
+
+- **Day of Launch**: Official website live; whitepaper/litepaper and roadmap published; audit visibility
+- **Token & Ecosystem Kickoff**: Public sale (Pinksale offering); transparent tokenomics and vesting on site
+- **Payments**: Accept BNB, ETH, USDT, USDC, and $TRAKEN for participation and subscriptions
+- **Marketing & Growth**: Multi‑platform campaigns (YouTube, TikTok, Twitter/X, Instagram Shorts, Telegram AMAs); focus on crypto influencers, AI tools, trading communities
+- **Referral System**: Earn $TRAKEN by referring the platform; user bonuses for bringing new users or staking
+- **Community & Tools**: Telegram bot with real‑time price, wallet tracking, staking updates, and referral tracking; partnerships with crypto projects, media outlets, and launchpads
+- **Security & Rewards**: Smart‑contract audits; liquidity lock (Team.Finance, Unicrypt, etc.); “Piece of the Pie” staking to earn from platform revenue (AI subscriptions, etc.)
+
+#### Phase 02 — Expansion & Utility (Months 4–6)
+
+- **Rollout of App**: Traken AI app (beta) featuring smart trading insights, wallet monitoring, AI alerts, and subscription dashboard
+- **App Store Deployment**: Available on iOS and Google Play; subscriptions via in‑app purchase or paid with $TRAKEN token
+- **Ecosystem Scaling**: Multichain integration (e.g., Solana, Ethereum) enabling cross‑chain utility of $TRAKEN
+- **DAO Governance**: Token‑holder voting on platform decisions, features, and staking terms
+- **Community Proposals**: Open proposals for tools, chains, and allocations
 
 ## 🎨 Design & Branding
 

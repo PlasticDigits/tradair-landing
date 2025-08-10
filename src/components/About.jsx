@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckCircle, Cpu, Shield, Users, Globe, Award } from 'lucide-react';
 import { Section, Container, Grid, Flex, Box, Text, Heading, Badge, Card } from '@radix-ui/themes';
-import BackgroundVideo from './BackgroundVideo';
+
 
 const About = () => {
   const achievements = [
@@ -32,7 +32,7 @@ const About = () => {
         
         {/* Background video removed for cleaner look; cosmic background provides ambience */}
 
-        <Container size="4" className="relative z-10">
+        <Container size="4" className="relative z-10" px="4">
           <Grid columns={{ initial: "1", lg: "2" }} gap="9" align="center">
             
             {/* Left Column - Content */}
@@ -49,7 +49,7 @@ const About = () => {
               <Heading 
                 size="8" 
                 mb="6"
-                className="font-display text-white"
+                className="font-display text-white text-3xl sm:text-5xl lg:text-6xl"
               >
                 The Future of <Text className="text-glow-cyan text-neon-cyan">Cryptocurrency Trading</Text> is{' '}
                 <Text className="bg-purple-gradient bg-clip-text text-transparent">Here</Text>
@@ -58,7 +58,7 @@ const About = () => {
               <Text 
                 size="4" 
                 mb="6"
-                className="font-body text-medium-gray leading-relaxed"
+                className="font-body text-medium-gray leading-relaxed text-base sm:text-lg"
               >
                 Tradair AI combines cutting-edge artificial intelligence with conversational ease through Telegram. 
                 Our intelligent chatbot delivers daily market insights, smart trading recommendations, and automated 
@@ -68,7 +68,7 @@ const About = () => {
               <Text 
                 size="3" 
                 mb="6"
-                className="font-body text-medium-gray leading-relaxed"
+                className="font-body text-medium-gray leading-relaxed text-sm sm:text-base"
               >
                 Built by a team of AI researchers, quantitative analysts, and blockchain developers, our platform 
                 gives traders the edge they need in today's volatile crypto markets through data-driven insights 
@@ -111,8 +111,8 @@ const About = () => {
                 {/* Main Dashboard Image */}
                 <Box className="relative bg-gradient-to-br from-tradair-purple/20 to-neon-cyan/10 backdrop-blur-sm border border-tradair-purple/30 rounded-2xl p-8">
                   <img 
-                    src="/images/ai-trading-hero-transparency.png" 
-                    alt="Traken AI Dashboard"
+                    src="/images/market-analysis.png" 
+                    alt="Traken Market Analysis"
                     className="w-full h-auto drop-shadow-2xl object-contain"
                   />
                 </Box>
@@ -121,8 +121,8 @@ const About = () => {
                 <Box className="absolute -top-6 -right-6">
                   <Box className="w-24 h-24 bg-gradient-to-br from-neon-cyan/20 to-transparent backdrop-blur-sm border border-neon-cyan/30 rounded-2xl p-4 animate-float">
                   <img 
-                    src="/images/traken-network-circle.png" 
-                    alt="Traken Network"
+                    src="/images/traken-buysell-ai-transformer.png" 
+                    alt="Traken Buy/Sell AI Transformer"
                     className="w-full h-full object-contain"
                   />
                   </Box>
@@ -130,11 +130,6 @@ const About = () => {
 
                 <Box className="absolute -bottom-8 -left-8">
                   <Box className="w-20 h-20 bg-gradient-to-br from-neon-pink/20 to-transparent backdrop-blur-sm border border-neon-pink/30 rounded-2xl p-4 animate-float" style={{animationDelay: '1s'}}>
-                  <img 
-                    src="/images/traken-chip.png" 
-                    alt="AI Chip"
-                    className="w-full h-full object-contain"
-                  />
                   </Box>
                 </Box>
 
