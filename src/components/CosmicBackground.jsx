@@ -78,7 +78,7 @@ const CosmicBackground = () => {
   return (
     <div
       aria-hidden
-      className="fixed inset-0 -z-20 pointer-events-none"
+      className="fixed inset-0 -z-20 pointer-events-none cosmic-bg"
       style={{
         position: 'fixed',
         background:
@@ -87,7 +87,7 @@ const CosmicBackground = () => {
     >
       {/* Curved grid overlay */}
       <svg
-        className="absolute inset-0 w-full h-full opacity-10"
+        className="absolute inset-0 w-full h-full opacity-10 pointer-events-none"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         style={{ willChange: 'transform' }}
@@ -121,7 +121,7 @@ const CosmicBackground = () => {
       </svg>
 
       {/* Soft vignette */}
-      <div className="absolute inset-0" style={{
+      <div className="absolute inset-0 pointer-events-none" style={{
         background: 'radial-gradient(circle at 50% 60%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.35) 100%)',
       }} />
 
@@ -131,7 +131,7 @@ const CosmicBackground = () => {
       <Orb className="parallax-orb" style={{ width: 220, right: '16%', bottom: '6%' }} />
 
       {/* Static star seeds for GSAP twinkle */}
-      <div id="twinkle-layer" className="absolute inset-0" />
+      <div id="twinkle-layer" className="absolute inset-0 pointer-events-none" />
     </div>
   );
 };
