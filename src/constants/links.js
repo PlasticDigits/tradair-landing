@@ -10,10 +10,17 @@ export const LINKS = {
   TELEGRAM_BOT: 'https://t.me/trakenai_bot',
   WEBSITE: 'https://traken.xyz/',
 
-  // Internal sections
-  SECTION_FEATURES: '#features',
-  SECTION_ABOUT: '#about',
-  SECTION_PRICING: '#pricing',
+  // Internal sections (IDs on the home route)
+  SECTION_FEATURES: '/#features',
+  SECTION_ABOUT: '/#about',
+  SECTION_PRICING: '/#pricing',
+
+  // Internal pages
+  PRIVACY: '/privacy',
+  TERMS: '/terms',
+  COOKIES: '/cookies',
+  DISCLAIMER: '/disclaimer',
+  AI_BIAS: '/ai-bias',
 };
 
 export default LINKS;

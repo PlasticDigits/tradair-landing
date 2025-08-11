@@ -13,6 +13,12 @@ import ScrollAnimations from './components/ScrollAnimations';
 import CyberGlow from './components/CyberGlow';
 import Roadmap from './components/Roadmap';
 import CosmicBackground from './components/CosmicBackground';
+import { Routes, Route } from 'react-router-dom';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookiePolicy from './pages/CookiePolicy';
+import Disclaimer from './pages/Disclaimer';
+import AIBiasDisclaimer from './pages/AIBiasDisclaimer';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -54,12 +60,26 @@ function App() {
             
             {/* Main Content */}
             <Header />
-            <main id="main-content" style={{paddingTop: '84px'}}>
-              <Hero />
-              <Roadmap />
-              <Features />
-              <About />
-              <Pricing />
+            <main id="main-content" style={{ paddingTop: '84px' }}>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Hero />
+                      <Roadmap />
+                      <Features />
+                      <About />
+                      <Pricing />
+                    </>
+                  }
+                />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsOfService />} />
+                <Route path="/cookies" element={<CookiePolicy />} />
+                <Route path="/disclaimer" element={<Disclaimer />} />
+                <Route path="/ai-bias" element={<AIBiasDisclaimer />} />
+              </Routes>
             </main>
             <Footer />
           </div>

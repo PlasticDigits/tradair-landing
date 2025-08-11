@@ -14,16 +14,15 @@ const Footer = () => {
   const resources = [
     { href: LINKS.X, label: 'X (Twitter)', external: true },
     { href: LINKS.TELEGRAM_COMMUNITY, label: 'Telegram Community', external: true },
-    { href: LINKS.TELEGRAM_BOT, label: 'Trading Bot', external: true },
-    { href: '#', label: 'Documentation' },
-    { href: '#', label: 'API Reference' }
+    { href: LINKS.TELEGRAM_BOT, label: 'Trading Bot', external: true }
   ];
 
   const legal = [
-    { href: '#', label: 'Privacy Policy' },
-    { href: '#', label: 'Terms of Service' },
-    { href: '#', label: 'Cookie Policy' },
-    { href: '#', label: 'Disclaimer' }
+    { href: LINKS.PRIVACY, label: 'Privacy Policy' },
+    { href: LINKS.TERMS, label: 'Terms of Service' },
+    { href: LINKS.COOKIES, label: 'Cookie Policy' },
+    { href: LINKS.DISCLAIMER, label: 'Disclaimer' },
+    { href: LINKS.AI_BIAS, label: 'AI Bias Disclaimer' }
   ];
 
   return (
