@@ -124,6 +124,26 @@
     box-shadow: 0 0 40px rgba(138, 60, 255, 0.35);
   }
   
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 6px 12px;
+    border: 1px solid rgba(138,60,255,0.35);
+    background: rgba(18,12,35,0.6);
+    backdrop-filter: blur(6px);
+  }
+  
+  .focus-brand:focus {
+    outline: 2px solid #8B5CF6;
+    outline-offset: 2px;
+  }
+  
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+  }
+  
   /* Custom animations */
   .animate-pulse-glow {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -131,6 +151,32 @@
   
   .animate-float {
     animation: float 3s ease-in-out infinite;
+  }
+
+  /* Prevent countdown jerk by using tabular numbers when available */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Responsive title sizing for sale page */
+  .sale-title {
+    font-size: clamp(2rem, 6vw, var(--font-size-brand-hero));
+  }
+  @media (max-width: 580px) {
+    .sale-title {
+      font-size: 2em !important;
+    }
+  }
+
+  /* Responsive size for countdown heading */
+  .countdown-title {
+    font-size: clamp(1.75rem, 10vw, 4.5rem);
+  }
+  @media (max-width: 580px) {
+    .countdown-title {
+      font-size: 2em !important;
+      line-height: 1.1;
+    }
   }
 }
 
@@ -142,6 +188,12 @@
   50% {
     transform: translateY(-10px);
   }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 html, body {

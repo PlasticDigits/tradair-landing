@@ -19,6 +19,7 @@ import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
 import Disclaimer from './pages/Disclaimer';
 import AIBiasDisclaimer from './pages/AIBiasDisclaimer';
+import TrakenSale from './pages/TrakenSale';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -74,6 +75,7 @@ function App() {
                     </>
                   }
                 />
+                <Route path="/sale" element={<TrakenSale />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/cookies" element={<CookiePolicy />} />
