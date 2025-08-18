@@ -4,7 +4,7 @@
 export const LINKS = {
   // External
   PRIVATE_SALE_FORM:
-    'https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform',
+    'https://traken.xyz/sale',
   X: 'https://x.com/trakenai',
   TELEGRAM_COMMUNITY: 'https://t.me/trakenai',
   TELEGRAM_BOT: 'https://t.me/trakenai_bot',
