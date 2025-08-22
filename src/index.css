@@ -178,6 +178,17 @@
       line-height: 1.1;
     }
   }
+
+  /* Smaller variant for in-sale closing countdown */
+  .countdown-title-small {
+    font-size: clamp(1rem, 6vw, 2.25rem);
+  }
+  @media (max-width: 580px) {
+    .countdown-title-small {
+      font-size: 1.25rem !important;
+      line-height: 1.2;
+    }
+  }
 }
 
 /* Keyframes for custom animations */

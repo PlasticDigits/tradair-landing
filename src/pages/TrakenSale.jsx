@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount, useReadContract, useWriteContract, useWatchBlockNumber, usePublicClient, useChainId } from 'wagmi';
 import { parseEther, formatEther, erc20Abi } from 'viem';
-import TRAKEN_SALE_ABI from '../constants/ABI/TrakenSale.json';
+import TRAKEN_SALE_ABI from '../constants/ABI/TrakenSaleV2.json';
 import CHAINLINK_ORACLE_ABI from '../constants/ABI/ChainlinkPriceOracle.json';
 import { SMART_CONTRACTS } from '../constants/smart-contracts';
 import confetti from 'canvas-confetti';
@@ -163,9 +163,35 @@ function Countdown({ startEpoch, endEpoch, onOpen }) {
         </>
       )}
       {status === 'OPEN' && (
-        <Heading as="div" size="7" className="text-glow-cyan">
-          Sale OPEN!
-        </Heading>
+        <>
+          <Heading
+            as="div"
+            size="6"
+            className="font-[Orbitron] tracking-widest tabular-nums countdown-title-small text-glow-pink"
+            style={{ display: 'flex', alignItems: 'baseline', columnGap: '0.15em', color: '#FF00FF' }}
+          >
+            <Box asChild style={{ minWidth: '2ch', textAlign: 'center' }}>
+              <span>{days}</span>
+            </Box>
+            <span>:</span>
+            <Box asChild style={{ minWidth: '2ch', textAlign: 'center' }}>
+              <span>{hours}</span>
+            </Box>
+            <span>:</span>
+            <Box asChild style={{ minWidth: '2ch', textAlign: 'center' }}>
+              <span>{minutes}</span>
+            </Box>
+            <span>:</span>
+            <Box asChild style={{ minWidth: '2ch', textAlign: 'center' }}>
+              <span>{seconds}</span>
+            </Box>
+            <span>.</span>
+            <Box asChild style={{ minWidth: '3ch', textAlign: 'center' }}>
+              <span>{millis}</span>
+            </Box>
+          </Heading>
+          <Text size="3" color="violet" className="text-glow-pink">Sale closes in</Text>
+        </>
       )}
       {status === 'CLOSED' && null}
     </Flex>
@@ -304,6 +330,39 @@ export default function TrakenSale() {
   const totalDepositsUsd = Number(totalDeposits) / 1e18;
 
   const { writeContractAsync } = useWriteContract();
+  // BigInt ceil division helper
+  function divCeil(a, b) {
+    return (a + b - 1n) / b;
+  }
+
+  // Format BNB (wei) to string with exactly 4 decimals
+  function formatBnbFixed4(wei, mode = 'floor') {
+    const denominator = 1000000000000000000n; // 1e18
+    const scale = 10000n; // 4 decimals
+    let scaled;
+    if (mode === 'ceil') {
+      scaled = (wei * scale + (denominator - 1n)) / denominator;
+    } else {
+      scaled = (wei * scale) / denominator;
+    }
+    const intPart = scaled / scale;
+    const fracPart = scaled % scale;
+    const fracStr = fracPart.toString().padStart(4, '0');
+    return `${intPart.toString()}.${fracStr}`;
+  }
+
+  // Compute slippage-aware BNB min/max bounds based on USD rules
+  const bnbBounds = useMemo(() => {
+    if (bnbPrice === 0n) return { minBnbWei: 0n, maxBnbWei: 0n, priceUsd: 0 };
+    const denom = 10n ** BigInt(bnbPriceDecimals);
+    const priceLow = (bnbPrice * 98n) / 100n; // -2%
+    const priceHigh = (bnbPrice * 102n) / 100n; // +2%
+    const minBnbWei = priceLow === 0n ? 0n : divCeil(minDepositWad * denom, priceLow);
+    const maxBnbWei = priceHigh === 0n ? 0n : (remainingPerWalletUsdWei * denom) / priceHigh;
+    const priceUsd = Number(bnbPrice) / Number(10n ** BigInt(bnbPriceDecimals));
+    return { minBnbWei, maxBnbWei, priceUsd };
+  }, [bnbPrice, bnbPriceDecimals, minDepositWad, remainingPerWalletUsdWei]);
+
 
   // sanitize numeric input: allow digits and one dot; limit to 18 decimals
   function sanitizeAmountInput(raw) {
@@ -351,14 +410,13 @@ export default function TrakenSale() {
         setError('Insufficient BNB balance (keep ~0.001 BNB for gas)');
         return false;
       }
-      const denom = 10n ** BigInt(bnbPriceDecimals);
-      const expectedUsdWei = (bnbWei * bnbPrice) / denom;
-      if (expectedUsdWei < minDepositWad) {
-        setError(`BNB amount is below USD minimum (${formatUsdWei(minDepositWad)})`);
+      const { minBnbWei, maxBnbWei } = bnbBounds;
+      if (bnbWei < minBnbWei) {
+        setError(`BNB amount is below minimum (${formatEther(minBnbWei)} BNB with 2% slippage)`);
         return false;
       }
-      if (expectedUsdWei > remainingPerWalletUsdWei) {
-        setError(`BNB amount exceeds your remaining max (${formatUsdWei(remainingPerWalletUsdWei)})`);
+      if (maxBnbWei > 0n && bnbWei > maxBnbWei) {
+        setError(`BNB amount exceeds your max (${formatEther(maxBnbWei)} BNB with 2% slippage)`);
         return false;
       }
     }
@@ -417,6 +475,19 @@ export default function TrakenSale() {
     setAmountInput(v);
   }
 
+  // Min button logic
+  function onMin() {
+    if (mode === 'USDT') {
+      const asNum = Number(minDepositWad) / 1e18;
+      const str = String(asNum);
+      setAmountInput(str);
+      return;
+    }
+    if (bnbPrice === 0n) return;
+    const v = formatBnbFixed4(bnbBounds.minBnbWei, 'ceil');
+    setAmountInput(v);
+  }
+
   async function onDeposit() {
     if (!isConnected) return;
     if (!validate()) return;
@@ -440,14 +511,11 @@ export default function TrakenSale() {
         setTxHash(hash);
       } else {
         const bnbWei = parseEther(amountInput);
-        const denom = 10n ** BigInt(bnbPriceDecimals);
-        const expectedUsdWei = (bnbWei * bnbPrice) / denom;
-        const minOut = (expectedUsdWei * 90n) / 100n; // 10% slippage guard
         const hash = await writeContractAsync({
           address: saleAddress,
           abi: TRAKEN_SALE_ABI,
           functionName: 'depositBnb',
-          args: [minOut],
+          args: [],
           value: bnbWei,
         });
         setTxHash(hash);
@@ -602,6 +670,11 @@ export default function TrakenSale() {
                 <Text size="2" color="gray">
                   Min per deposit: {formatUsdWei(minDepositWad)} | Your deposited: {formatUsdWei(userDeposited)} | Your remaining: {formatUsdWei(remainingPerWalletUsdWei)}
                 </Text>
+                {mode === 'BNB' && (
+                  <Text size="2" color="gray">
+                    BNB price: ${bnbBounds.priceUsd.toLocaleString(undefined, { maximumFractionDigits: 2 })} | Min: {formatBnbFixed4(bnbBounds.minBnbWei, 'ceil')} BNB | Max: {bnbBounds.maxBnbWei > 0n ? formatBnbFixed4(bnbBounds.maxBnbWei, 'floor') : '—'} BNB (2% slippage)
+                  </Text>
+                )}
                 <Flex align="center" gap="3">
                   <Box grow="1">
                     <TextField.Root
@@ -610,6 +683,14 @@ export default function TrakenSale() {
                       onChange={(e) => setAmountInput(sanitizeAmountInput(e.target.value))}
                     />
                   </Box>
+                  <Button
+                    size="2"
+                    variant="soft"
+                    onClick={onMin}
+                    disabled={txStatus === 'pending'}
+                  >
+                    Min
+                  </Button>
                   <Button
                     size="2"
                     variant="soft"
