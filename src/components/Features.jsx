@@ -25,7 +25,7 @@ const Features = () => {
       title: "Real-Time Analysis",
       description: "Live market analysis across multiple exchanges with sentiment analysis from social media and news sources.",
       image: "/images/trading-dash.png",
-      color: "tradair-purple"
+      color: "traken-purple"
     },
     {
       icon: <Shield className="w-8 h-8" />,
@@ -69,7 +69,7 @@ const Features = () => {
             <Badge 
               size="2" 
               mb="6"
-              className="bg-tradair-purple/20 border border-tradair-purple/30 text-tradair-purple backdrop-blur-sm"
+              className="bg-traken-purple/20 border border-traken-purple/30 text-traken-purple backdrop-blur-sm"
             >
               <Zap className="w-4 h-4 mr-2" />
               Platform Features
@@ -101,7 +101,7 @@ const Features = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Feature Card */}
-                <Card className="relative bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border border-tradair-purple/20 p-6 lg:p-8 h-full transition-all duration-300 hover:border-tradair-purple/40 hover:shadow-card hover:transform hover:scale-105">
+                <Card className="relative bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border border-traken-purple/20 p-6 lg:p-8 h-full transition-all duration-300 hover:border-traken-purple/40 hover:shadow-card hover:transform hover:scale-105">
                   
                   {/* Icon */}
                   <Flex 
@@ -119,7 +119,7 @@ const Features = () => {
                   <Heading 
                     size="5" 
                     mb="4"
-                    className="font-interface text-white group-hover:text-tradair-purple transition-colors duration-300 text-xl"
+                    className="font-interface text-white group-hover:text-traken-purple transition-colors duration-300 text-xl"
                   >
                     {feature.title}
                   </Heading>
@@ -133,7 +133,7 @@ const Features = () => {
                   </Text>
 
                   {/* Feature Image */}
-                  <Box className="relative overflow-hidden rounded-lg bg-gradient-to-br from-tradair-purple/10 to-transparent p-4">
+                  <Box className="relative overflow-hidden rounded-lg bg-gradient-to-br from-traken-purple/10 to-transparent p-4">
                     <img 
                       src={feature.image} 
                       alt={feature.title}

@@ -27,7 +27,7 @@ const Disclaimer = () => {
         </Text>
 
         <Text as="p" size="3" className="text-medium-gray mb-4">
-          TRADAIR AI is a tool designed to assist users by providing AI-generated trading insights, market analytics, wallet activity monitoring, and pattern recognition. Our services are intended to be informational and educational only. We do not provide personalized financial, investment, tax, or legal advice, nor do we offer or promote any specific investment strategy.
+          TRAKEN AI is a tool designed to assist users by providing AI-generated trading insights, market analytics, wallet activity monitoring, and pattern recognition. Our services are intended to be informational and educational only. We do not provide personalized financial, investment, tax, or legal advice, nor do we offer or promote any specific investment strategy.
         </Text>
 
         <Text as="p" size="3" className="text-medium-gray mb-4">
@@ -35,7 +35,7 @@ const Disclaimer = () => {
         </Text>
 
         <Text as="p" size="3" className="text-medium-gray mb-3">
-          By using TRADAIR AI, you acknowledge and agree that:
+          By using TRAKEN AI, you acknowledge and agree that:
         </Text>
         <Box asChild className="text-medium-gray mb-4">
           <ul className="list-disc pl-6 space-y-2">
@@ -43,13 +43,13 @@ const Disclaimer = () => {
             <li>You should only invest what you can afford to lose without affecting your standard of living.</li>
             <li>You understand that past performance is not a reliable indicator of future performance.</li>
             <li>
-              TRADAIR AI, its developers, partners, affiliates, and contributors are not liable for any direct or indirect losses, including but not limited to financial loss, missed opportunities, or emotional stress resulting from your use of the platform.
+              TRAKEN AI, its developers, partners, affiliates, and contributors are not liable for any direct or indirect losses, including but not limited to financial loss, missed opportunities, or emotional stress resulting from your use of the platform.
             </li>
             <li>
               You are responsible for complying with all local, state, national, or international laws regarding cryptocurrency use, trading, taxation, and data privacy.
             </li>
             <li>
-              Use of this app does not create a client, fiduciary, or advisory relationship between you and TRADAIR AI or any associated entity.
+              Use of this app does not create a client, fiduciary, or advisory relationship between you and TRAKEN AI or any associated entity.
             </li>
           </ul>
         </Box>
@@ -58,13 +58,13 @@ const Disclaimer = () => {
           Additionally, while we may monitor and analyze wallet behavior, on-chain data, token movements, and market sentiment, such insights are inherently limited in scope and do not constitute trading signals or guarantees. We are not responsible for interpreting such data for your specific situation.
         </Text>
         <Text as="p" size="3" className="text-medium-gray mb-4">
-          Third-party integrations and data sources (including blockchain explorers, exchanges, and APIs) may experience outages, delays, or inaccuracies. TRADAIR AI is not responsible for errors or losses that result from reliance on such external information.
+          Third-party integrations and data sources (including blockchain explorers, exchanges, and APIs) may experience outages, delays, or inaccuracies. TRAKEN AI is not responsible for errors or losses that result from reliance on such external information.
         </Text>
         <Text as="p" size="3" className="text-medium-gray mb-4">
           We recommend that you consult with a licensed financial advisor or investment professional before making any decisions based on information obtained from this app. The cryptocurrency market is speculative and unregulated in many jurisdictions; participation may expose you to increased risk of fraud, volatility, and legal uncertainty.
         </Text>
         <Text as="p" size="3" className="text-medium-gray mb-6">
-          By accessing or using the TRADAIR AI platform, you acknowledge that you have read, understood, and agreed to this disclaimer in full. Use at your own discretion and risk.
+          By accessing or using the TRAKEN AI platform, you acknowledge that you have read, understood, and agreed to this disclaimer in full. Use at your own discretion and risk.
         </Text>
 
         <Separator my="5" />

@@ -7,7 +7,7 @@ const About = () => {
   const achievements = [
     { icon: <Users className="w-6 h-6" />, label: "1000+ Early Users", color: "neon-cyan" },
     { icon: <Award className="w-6 h-6" />, label: "95%+ Accuracy Rate", color: "neon-pink" },
-    { icon: <Shield className="w-6 h-6" />, label: "Audited Smart Contracts", color: "tradair-purple" },
+    { icon: <Shield className="w-6 h-6" />, label: "Audited Smart Contracts", color: "traken-purple" },
     { icon: <Globe className="w-6 h-6" />, label: "Multi-chain Support", color: "neon-blue" }
   ];
 
@@ -27,7 +27,7 @@ const About = () => {
     >
       <section
         id="about"
-        aria-label="About Tradair AI company and technology"
+        aria-label="About Traken AI company and technology"
       >
         
         {/* Background video removed for cleaner look; cosmic background provides ambience */}
@@ -40,10 +40,10 @@ const About = () => {
               <Badge 
                 size="2" 
                 mb="6"
-                className="bg-tradair-purple/20 border border-tradair-purple/30 text-tradair-purple backdrop-blur-sm w-fit"
+                className="bg-traken-purple/20 border border-traken-purple/30 text-traken-purple backdrop-blur-sm w-fit"
               >
                 <Cpu className="w-4 h-4 mr-2" />
-                About Tradair AI
+                About Traken AI
               </Badge>
 
               <Heading 
@@ -60,7 +60,7 @@ const About = () => {
                 mb="6"
                 className="font-body text-medium-gray leading-relaxed text-base sm:text-lg"
               >
-                Tradair AI combines cutting-edge artificial intelligence with conversational ease through Telegram. 
+                Traken AI combines cutting-edge artificial intelligence with conversational ease through Telegram. 
                 Our intelligent chatbot delivers daily market insights, smart trading recommendations, and automated 
                 trading capabilities directly in your messaging app.
               </Text>
@@ -90,7 +90,7 @@ const About = () => {
                 {achievements.map((achievement, index) => (
                   <Card 
                     key={index}
-                    className="bg-gradient-to-br from-cyber-black/60 to-dark-gray/20 backdrop-blur-sm border border-tradair-purple/20 p-4"
+                    className="bg-gradient-to-br from-cyber-black/60 to-dark-gray/20 backdrop-blur-sm border border-traken-purple/20 p-4"
                   >
                     <Flex align="center" gap="3">
                       <Box className={`text-${achievement.color}`}>
@@ -109,7 +109,7 @@ const About = () => {
             <Box className="relative reveal-right">
               <Box className="relative">
                 {/* Main Dashboard Image */}
-                <Box className="relative bg-gradient-to-br from-tradair-purple/20 to-neon-cyan/10 backdrop-blur-sm border border-tradair-purple/30 rounded-2xl p-8">
+                <Box className="relative bg-gradient-to-br from-traken-purple/20 to-neon-cyan/10 backdrop-blur-sm border border-traken-purple/30 rounded-2xl p-8">
                   <img 
                     src="/images/market-analysis.png" 
                     alt="Traken Market Analysis"
@@ -134,7 +134,7 @@ const About = () => {
                 </Box>
 
                 {/* Background Glow Effects */}
-                <Box className="absolute top-1/4 right-1/4 w-32 h-32 bg-tradair-purple/20 rounded-full blur-3xl animate-pulse"></Box>
+                <Box className="absolute top-1/4 right-1/4 w-32 h-32 bg-traken-purple/20 rounded-full blur-3xl animate-pulse"></Box>
                 <Box className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-neon-cyan/20 rounded-full blur-2xl animate-pulse" style={{animationDelay: '2s'}}></Box>
               </Box>
             </Box>
@@ -144,7 +144,7 @@ const About = () => {
           <Box mt="9">
             <Grid columns={{ initial: "1", md: "3" }} gap="6" className="text-center">
               
-              <Card className="group bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border border-tradair-purple/20 p-8 transition-all duration-300 hover:border-tradair-purple/40 hover:shadow-card">
+              <Card className="group bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border border-traken-purple/20 p-8 transition-all duration-300 hover:border-traken-purple/40 hover:shadow-card">
                 <Text size="8" weight="bold" className="font-accent text-neon-cyan text-glow-cyan mb-2 block">
                   24/7
                 </Text>
@@ -156,7 +156,7 @@ const About = () => {
                 </Text>
               </Card>
 
-              <Card className="group bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border border-tradair-purple/20 p-8 transition-all duration-300 hover:border-tradair-purple/40 hover:shadow-card">
+              <Card className="group bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border border-traken-purple/20 p-8 transition-all duration-300 hover:border-traken-purple/40 hover:shadow-card">
                 <Text size="8" weight="bold" className="font-accent text-neon-pink text-glow-pink mb-2 block">
                   500M+
                 </Text>
@@ -168,8 +168,8 @@ const About = () => {
                 </Text>
               </Card>
 
-              <Card className="group bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border border-tradair-purple/20 p-8 transition-all duration-300 hover:border-tradair-purple/40 hover:shadow-card">
-                <Text size="8" weight="bold" className="font-accent text-tradair-purple text-glow mb-2 block">
+              <Card className="group bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border border-traken-purple/20 p-8 transition-all duration-300 hover:border-traken-purple/40 hover:shadow-card">
+                <Text size="8" weight="bold" className="font-accent text-traken-purple text-glow mb-2 block">
                   &lt;1s
                 </Text>
                 <Text size="4" weight="bold" className="font-interface text-white mb-2 block">

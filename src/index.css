@@ -25,9 +25,9 @@
   --color-traken-lavender: #C27EFF; /* Soft lavender */
 
   /* Backward-compatible aliases (will be removed after full refactor) */
-  --color-tradair-purple: #8A3CFF;
-  --color-tradair-deep-purple: #2B0B65;
-  --color-tradair-light-purple: #C27EFF;
+  --color-traken-purple: #8A3CFF;
+  --color-traken-deep-purple: #2B0B65;
+  --color-traken-light-purple: #C27EFF;
   
   /* Secondary colors */
   --color-neon-cyan: #00D4FF;

@@ -106,11 +106,11 @@ This project follows the **[Traken AI Style Guide](./STYLE_GUIDE.md)** which def
 | **Professional** | $199.99/month | $1,999.99/year | Full AI Suite, 25 Bots, Unlimited Wallets, Advanced Analytics                                                                 |
 | **Enterprise**   | $2,000/month  | $20,000/year   | Multi-Client Management, White-label Platform, Institutional Advisory Tools, Custom Client Reports, Dedicated Account Manager |
 
-### 🔥 TRADAIR Token Benefits
+### 🔥 TRAKEN Token Benefits
 
 #### For All Token Holders
 
-- **20% Discount**: Pay with $TRADAIR tokens and save 20% on all subscription plans
+- **20% Discount**: Pay with $TRAKEN tokens and save 20% on all subscription plans
 - **Exclusive Access**: Early access to new AI tools and features
 - **DAO Voting**: Participate in platform governance and feature decisions
 
@@ -122,18 +122,18 @@ This project follows the **[Traken AI Style Guide](./STYLE_GUIDE.md)** which def
 
 #### Deflationary Tokenomics 🔥
 
-- **AI Trading Burns**: When our automated trading system executes trades, a percentage of profits automatically buys and burns TRADAIR tokens
+- **AI Trading Burns**: When our automated trading system executes trades, a percentage of profits automatically buys and burns TRAKEN tokens
 - **Subscription Burns**: Monthly auto-burn of subscription revenue increases token scarcity
 - **Performance Burns**: Milestone-based burns as we hit user growth targets
 
-_The more successful Traken AI becomes, the more valuable TRADAIR tokens become through reduced supply and increased utility demand._
+_The more successful Traken AI becomes, the more valuable TRAKEN tokens become through reduced supply and increased utility demand._
 
 ## 🔗 Important Links
 
 - **Website**: [traken.xyz](https://traken.xyz)
 - **Registration**: [Early Access Form](https://docs.google.com/forms/d/e/1FAIpQLSfstlZZ2b1ROmlq0C_JD_wnomy5mgaJR69Cp22OX7unbVU57g/viewform)
 - **X (Twitter)**: [@trakenai](https://x.com/trakenai)
-- **Telegram**: [@tradairofficial](https://t.me/tradairofficial)
+- **Telegram**: [@trakenofficial](https://t.me/trakenai)
 
 ## 🤝 Contributing
 
@@ -162,7 +162,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Need help or have questions?
 
 - Follow us on [X](https://x.com/trakenai)
-- Join our [Telegram community](https://t.me/tradairofficial)
+- Join our [Telegram community](https://t.me/trakenai)
 - Email us at support@traken.xyz
 - Check our documentation and FAQ
 

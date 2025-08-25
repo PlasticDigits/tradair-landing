@@ -32,7 +32,7 @@ const Pricing = () => {
       annualPeriod: "year",
       description: "Advanced AI suite for serious traders and professionals",
       icon: <Crown className="w-6 h-6" />,
-      color: "tradair-purple",
+      color: "traken-purple",
       popular: true,
       features: [
         "Full AI Trading Suite",
@@ -72,7 +72,7 @@ const Pricing = () => {
     {
       icon: <Check className="w-5 h-5" />,
       title: "20% Discount",
-      description: "Pay with $TRADAIR tokens and save 20% on all subscription plans"
+      description: "Pay with $TRAKEN tokens and save 20% on all subscription plans"
     },
     {
       icon: <Zap className="w-5 h-5" />,
@@ -110,7 +110,7 @@ const Pricing = () => {
             <Badge 
               size="2" 
               mb="6"
-              className="bg-tradair-purple/20 border border-tradair-purple/30 text-tradair-purple backdrop-blur-sm"
+              className="bg-traken-purple/20 border border-traken-purple/30 text-traken-purple backdrop-blur-sm"
             >
               <Crown className="w-4 h-4 mr-2" />
               Pricing & Token Utility
@@ -153,8 +153,8 @@ const Pricing = () => {
                 {/* Pricing Card */}
                 <Card className={`relative bg-gradient-to-br from-cyber-black/80 to-dark-gray/20 backdrop-blur-sm border p-8 h-full transition-all duration-300 hover:shadow-card ${
                   plan.popular 
-                    ? 'border-tradair-purple/60 shadow-purple-glow' 
-                    : 'border-tradair-purple/20 hover:border-tradair-purple/40'
+                    ? 'border-traken-purple/60 shadow-purple-glow' 
+                    : 'border-traken-purple/20 hover:border-traken-purple/40'
                 }`}>
                   
                   {/* Header */}
@@ -226,15 +226,15 @@ const Pricing = () => {
           </Grid>
 
           {/* Token Benefits Section */}
-          <Card className="bg-gradient-to-br from-tradair-purple/10 to-neon-cyan/5 backdrop-blur-sm border border-tradair-purple/30 p-8 lg:p-12">
+          <Card className="bg-gradient-to-br from-traken-purple/10 to-neon-cyan/5 backdrop-blur-sm border border-traken-purple/30 p-8 lg:p-12">
             <Flex direction="column" align="center" mb="8">
               <Badge 
                 size="2" 
                 mb="6"
-                className="bg-tradair-purple/20 border border-tradair-purple/30 text-tradair-purple backdrop-blur-sm"
+                className="bg-traken-purple/20 border border-traken-purple/30 text-traken-purple backdrop-blur-sm"
               >
                 <Flame className="w-4 h-4 mr-2" />
-                $TRADAIR Token Benefits
+                $TRAKEN Token Benefits
               </Badge>
               
               <Heading 
@@ -249,7 +249,7 @@ const Pricing = () => {
                 size="3" 
                 className="font-body text-medium-gray max-w-2xl text-center"
               >
-                Hold $TRADAIR tokens to unlock exclusive features, discounts, and revenue sharing opportunities.
+                Hold $TRAKEN tokens to unlock exclusive features, discounts, and revenue sharing opportunities.
               </Text>
             </Flex>
 
@@ -267,9 +267,9 @@ const Pricing = () => {
                       align="center" 
                       justify="center" 
                       mb="4"
-                      className="w-12 h-12 rounded-2xl bg-gradient-to-br from-tradair-purple/20 to-neon-cyan/10 border border-tradair-purple/30 group-hover:scale-110 transition-transform duration-300"
+                      className="w-12 h-12 rounded-2xl bg-gradient-to-br from-traken-purple/20 to-neon-cyan/10 border border-traken-purple/30 group-hover:scale-110 transition-transform duration-300"
                     >
-                      <Box className="text-tradair-purple">
+                      <Box className="text-traken-purple">
                         {benefit.icon}
                       </Box>
                     </Flex>
@@ -289,7 +289,7 @@ const Pricing = () => {
               <Button
                 asChild
                 size="4"
-                className="bg-gradient-to-r from-tradair-purple to-neon-pink text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-purple-glow"
+                className="bg-gradient-to-r from-traken-purple to-neon-pink text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-purple-glow"
               >
                 <a
                   href={LINKS.PRIVATE_SALE_FORM}
