@@ -499,7 +499,7 @@ direct `main`.
    delete root `CODEOWNERS`, paste the Decision 3 README pointer with
    relative links to those two paths. `cac-design-issue-2` stays the
    review/transport branch; do not open it as the product PR; do not merge
-   it as docs-only first.    Do not merge a README that points at those paths
+   it as docs-only first. Do not merge a README that points at those paths
    until they exist on that tip. On the product tip, `docs/architecture.md`
    must be fully byte-identical to that named SHA; the ADR must be
    byte-identical except the allowed Status flip on the **product** tip.
@@ -511,6 +511,7 @@ direct `main`.
    required while it has not diverged):
 
    ```bash
+   set -euo pipefail
    git fetch origin cac-design-issue-2 chore/remove-catchall-codeowners main
    DESIGN_SHA=<sha named in the independent-review comment>
    git rev-parse --verify "${DESIGN_SHA}^{commit}"
@@ -524,10 +525,12 @@ direct `main`.
    # No Status-only successor on cac-design-issue-2.
    # architecture: fully byte-identical (no Status exception).
    git diff --exit-code "$DESIGN_SHA" -- docs/architecture.md
-   # ADR: byte-identical except Status Proposed -> Accepted (product tip).
-   cmp -s \
-     <(git show "$DESIGN_SHA:docs/adr/0001-remove-catchall-codeowners.md" | sed '1,12 s/^Proposed (/STATUS (/; 1,12 s/^Accepted (/STATUS (/') \
-     <(sed '1,12 s/^Proposed (/STATUS (/; 1,12 s/^Accepted (/STATUS (/' docs/adr/0001-remove-catchall-codeowners.md)
+   # ADR: byte-identical except the single Status line Proposed -> Accepted
+   # on the product tip (or no diff). Halt on any other hunk.
+   adr_extra=$(git diff -U0 "$DESIGN_SHA" -- docs/adr/0001-remove-catchall-codeowners.md \
+     | grep -E '^[+-]' | grep -vE '^(--- |\+\+\+ )' \
+     | grep -vE '^-Proposed \(|^\+Accepted \(' || true)
+   test -z "$adr_extra"
    git rm CODEOWNERS
    # README: paste Decision 3 pointer under ## Contributing; keep product map.
    grep -F '[`docs/architecture.md`](docs/architecture.md)' README.md
@@ -798,7 +801,7 @@ not this contract). Do not require that stale case to pass as a land gate.
    if the PR has no changed file, if the changed path is not
    `docs/_codeowners-plant-check.txt`, if reviewers were requested manually,
    or if either GET signal is present after the wait. Do not use `#2`. Do
-   not use `#1`. Do not use “the next natural PR.”    Who opens the PR: anyone
+   not use `#1`. Do not use “the next natural PR.” Who opens the PR: anyone
    who can create a PR on `code/tradair-landing`. Who GETs protection
    (item 3) and the land GET (item 7): **repo admin of
    `code/tradair-landing`**, distinct from the S2 pusher; not
