@@ -2,9 +2,9 @@
 
 ## Status
 
-Proposed ([#2](https://git.cl8y.com/code/tradair-landing/issues/2); merged #2
-is S1-only and does not complete this ADR). Not
-accepted by this design-author pass. Do not call this tip accepted until
+Proposed ([#2](https://git.cl8y.com/code/tradair-landing/issues/2); merged #2 is S1-only and does not complete this ADR).
+
+Not accepted by this design-author pass. Do not call this tip accepted until
 independent review names **this commit SHA** in a review comment. Keywords
 in the issue body are not architecture approval. Originating chore iid `#2`
 is **closed** (squash-merged 2026-09-21T13:18:55Z). The successor product PR
@@ -15,9 +15,11 @@ not implementer choice of “this SHA or a successor,” and it is **not**
 previous Proposed `590fd76143dc2bcec058767c0c70f7d1a33d5b5b`. Implement
 copies the two `docs/` files from **that named SHA** onto the successor
 product tip. `origin/main` `0197f8c` is **not** a copy source (S1-only; no
-`docs/`). After review names this SHA, implement **may** flip **only** the
-Status line of `docs/adr/0001-remove-catchall-codeowners.md` from `Proposed`
-to `Accepted` on the **product** tip; that one-line flip does not require a
+`docs/`). After review names this SHA, implement **may** flip **only** the single
+Status value line of `docs/adr/0001-remove-catchall-codeowners.md` from
+`Proposed (` to `Accepted (` on the **product** tip (identical suffix;
+author-pass / named-SHA / transport-ref paragraphs below that line are
+not part of the flipped token). That one-line flip does not require a
 new design loop. `docs/architecture.md` must be **fully** byte-identical to
 the named SHA (it has no Status line; do not invent one). Every other byte
 of the ADR must match the named SHA. A Status-only successor invented on
@@ -35,7 +37,7 @@ the standing T2 contract after land. Do not copy that table here. **T2**
 there is three groups: protection GET (six flags), merge procedure
 (**T2-4**), tree contracts (**T2-1**, **T2-6**, **T2-7**). Successor-PR
 procedure after spent vehicle B, design-branch transport
-(`cac-design-issue-2`), Status-line flip, pre-merge admin GET attestation
+(`cac-design-issue-2`), single Status value-line flip, pre-merge admin GET attestation
 (**successor PR comment**), and the CI-enablement iid gap live **only** in
 this ADR. Do not restate them in architecture.
 
@@ -319,8 +321,10 @@ Decision 7).
    SHA exists locally and `git merge-base --is-ancestor` confirms it is a
    reachable commit on that **live** transport branch, not an arbitrary
    object. `0197f8c` and `590fd76` are not copy sources. After review names
-   the SHA, implement **may** flip **only** the Status line of the ADR from
-   `Proposed` to `Accepted` on the **product** tip (no new design loop).
+   the SHA, implement **may** flip **only** the single Status value line of
+   the ADR from `Proposed (` to `Accepted (` on the **product** tip
+   (identical suffix; author-pass / named-SHA / transport-ref paragraphs
+   below that line are not part of the flipped token; no new design loop).
    `docs/architecture.md` must stay fully byte-identical (no Status line;
    do not invent one). Do not invent a Status-only successor on
    `cac-design-issue-2` instead of using the named SHA.
@@ -342,8 +346,8 @@ Decision 7).
    Do not merge a README that points at those paths until they exist on
    that tip. On the product tip, `docs/architecture.md` must be fully
    byte-identical to the named SHA; the ADR must be byte-identical except
-   the allowed Status line. Do not rewrite `STYLE_GUIDE.md` / `TODO.md` /
-   visitor copy.
+   the allowed single Status value line. Do not rewrite `STYLE_GUIDE.md` /
+   `TODO.md` / visitor copy.
 4. **Leave** already-planted official requests on open PRs (including closed
    `#2` and open `#1`). A dated **admin** GET of **this** repo’s `main` rule
    showing **T2-2** (`enable_push == false`), **T2-9**, and **T2-10** is
@@ -393,7 +397,7 @@ Decision 7).
 | --- | --- |
 | `CODEOWNERS` (root) | Already removed on `main` (`0197f8c`). Successor asserts four-path `test -f` fails. Do not `git rm` again. Design-transport SHA still has the six-line file in ancestry; do not merge that branch. |
 | `docs/CODEOWNERS`, `.gitea/CODEOWNERS`, `.forgejo/CODEOWNERS` | Must remain absent (no empty file). |
-| `docs/adr/0001-remove-catchall-codeowners.md`, `docs/architecture.md` | Copy from the SHA named in independent review onto the successor PR so the merged tip is S0+S2. `docs/architecture.md` fully byte-identical to that SHA. ADR byte-identical except the single Status flip `Proposed` → `Accepted` on the **product** tip (not a Status-only successor on `cac-design-issue-2`). Standing T2 contract lands with the README pointer. Not copied from `590fd76` or `0197f8c`. |
+| `docs/adr/0001-remove-catchall-codeowners.md`, `docs/architecture.md` | Copy from the SHA named in independent review onto the successor PR so the merged tip is S0+S2. `docs/architecture.md` fully byte-identical to that SHA. ADR byte-identical except the single Status value line `Proposed (` → `Accepted (` (identical suffix; author-pass paragraphs below that line are not flipped) on the **product** tip (not a Status-only successor on `cac-design-issue-2`). Standing T2 contract lands with the README pointer. Not copied from `590fd76` or `0197f8c`. |
 | Forgejo PR review interface | After S1, a **dedicated** plant-check PR against `main` must not get an official CODEOWNERS team request. |
 | Branch protection API | No write from this ticket. Operator leftover-complete reads must still match architecture **protection GET** (six flags for the `main` rule). In-repo CI cannot perform that GET. Public `GET .../branches/main` (2026-09-21) is the land Woodpecker wait, not that GET. Dated **admin** GET of **this** repo’s `main` rule showing **T2-2**, **T2-9**, and **T2-10** is **mandatory** before merge of `{successor}`. Attest as a **comment on the successor product PR**. Attested by **repo admin of `code/tradair-landing`**, distinct from the S2 pusher. The GET is a read, not a #297 grant. **T2-10** `true` → stop on forge `#48`. Do not dismiss then skip GET. Fleet `#48` / `code/hello` / public `branches/main` do not count. |
 | `.woodpecker.yaml` / `.woodpecker/` | Must remain absent in this ticket. Do not add one to unblock merge. S2 opens the CI-enablement issue; it does not add the pipeline. |
@@ -543,8 +547,11 @@ still missing. Merge gate stays host CI + no direct `main`.
    merge a README that points at those paths until they exist on that tip.
    On the product tip, `docs/architecture.md` must be fully byte-identical
    to that named SHA; the ADR must be byte-identical except the allowed
-   Status flip on the **product** tip. `0197f8c` is not a docs copy source.
-   `590fd76` is not a copy source. `cc21b56` is not a copy source.
+   single Status value line on the **product** tip. Any Status flip is
+   that one line, **before** `git add`; architecture identity and the
+   Status filter run on **`git diff --cached`** (fail if worktree ≠
+   index). `0197f8c` is not a docs copy source. `590fd76` is not a copy
+   source. `cc21b56` is not a copy source.
 
    ```bash
    set -euo pipefail
@@ -584,15 +591,19 @@ still missing. Merge gate stays host CI + no direct `main`.
    grep -F '[`docs/architecture.md`](docs/architecture.md)' README.md
    grep -F '[ADR 0001](docs/adr/0001-remove-catchall-codeowners.md)' README.md
    grep -F 'ci/woodpecker/pr/woodpecker' README.md
+   # Optional after review named this SHA: flip only the single Status
+   # value line of the ADR (`Proposed (` -> `Accepted (`, identical suffix)
+   # on this product tip BEFORE git add. Do not flip author-pass /
+   # named-SHA / transport-ref paragraphs below that line. No architecture
+   # edits. No Status-only successor on cac-design-issue-2.
    git add README.md docs
-   # Optional after review named this SHA: flip only the Status line of the
-   # ADR Proposed -> Accepted on this product tip. No architecture edits.
-   # No Status-only successor on cac-design-issue-2.
+   # Fail if worktree ≠ index (git commit records the index).
+   git diff --exit-code
+   # architecture identity and ADR Status filter on the INDEX.
    # architecture: fully byte-identical (no Status exception).
-   git diff --exit-code "$DESIGN_SHA" -- docs/architecture.md
-   # ADR Status filter: run immediately before git commit.
+   git diff --cached --exit-code "$DESIGN_SHA" -- docs/architecture.md
    # Allow no ADR diff, or a 1:1 Proposed ( -> Accepted ( with identical suffix.
-   adr_hunk=$(git diff -U0 "$DESIGN_SHA" -- docs/adr/0001-remove-catchall-codeowners.md \
+   adr_hunk=$(git diff --cached -U0 "$DESIGN_SHA" -- docs/adr/0001-remove-catchall-codeowners.md \
      | grep -E '^[+-]' | grep -vE '^(--- |\+\+\+ )' || true)
    if test -n "$adr_hunk"; then
      test "$(printf '%s\n' "$adr_hunk" | grep -c '^')" -eq 2
@@ -804,6 +815,7 @@ is deleted. Do not treat either as a live land tip. `origin/main` is
 | `src/` / sale addresses / `STYLE_GUIDE.md` / `package.json` sneak into the MR | Fail review. |
 | README treats `docs/architecture.md` as product architecture or stubs the product map | Fail S2. Two architecture docs must not collide. |
 | Implement copies `0197f8c`, `590fd76`, or “this SHA or a successor” instead of the SHA named in review | Fail land criterion 2. Accepted SHA is the named SHA. |
+| Status flip after `git add` (worktree `Accepted`, index `Proposed`) | `git commit` would record `Proposed`. Recipe fails `git diff --exit-code` (worktree ≠ index). Flip the single Status value line **before** `git add`; architecture identity and the Status filter run on `git diff --cached`. |
 | `DESIGN_SHA` is an arbitrary object not on `origin/cac-design-issue-2` | Fail land criterion 2. After `git fetch origin cac-design-issue-2`, `git merge-base --is-ancestor "$DESIGN_SHA" origin/cac-design-issue-2` must succeed. |
 | Implement deploys Render, rotates sale/token addresses, or edits `autonomy.rs` / HMAC | Forbidden (#297). |
 
@@ -811,7 +823,7 @@ is deleted. Do not treat either as a live land tip. `origin/main` is
 
 | Slice | Work | Depends on |
 | --- | --- | --- |
-| **S0** | This design (ADR 0001 + architecture **T2**). Transport on **live** `cac-design-issue-2`. Copy **the SHA named in independent review** onto the successor tip (not `0197f8c`, not `590fd76`). `docs/architecture.md` fully byte-identical. ADR: one-line Status flip `Proposed` → `Accepted` allowed on the **product** tip only. Do not call this tip accepted until independent review names the SHA. `cac-design-issue-2` is never the merge vehicle. | None in `code/tradair-landing`. |
+| **S0** | This design (ADR 0001 + architecture **T2**). Transport on **live** `cac-design-issue-2`. Copy **the SHA named in independent review** onto the successor tip (not `0197f8c`, not `590fd76`). `docs/architecture.md` fully byte-identical. ADR: one-line Status value flip `Proposed (` → `Accepted (` (identical suffix; author-pass paragraphs below that line stay) allowed on the **product** tip only. Do not call this tip accepted until independent review names the SHA. `cac-design-issue-2` is never the merge vehicle. | None in `code/tradair-landing`. |
 | **S1** | Already on `main` at `0197f8c` (six-line delete). Successor asserts four-path `test -f` fails. Do not cherry-pick `cc21b56`. Do not `git rm` again. | None remaining. |
 | **S2** | README pointer on the **same** successor tip (script Decision 3; recipe greps after insert). Open the leftover issue in **`code/tradair-landing` only**, before successor merge, with the body template under Migration (merged `#2` does not complete ADR 0001). **The S2 implementer** (pusher of the S0+S2 tip) also opens the CI-enablement issue in this repo before treating the Woodpecker wait as a named CI issue. **Repo admin of `code/tradair-landing`** (distinct from the S2 pusher) attests the dated **admin** **T2-2** / **T2-9** / **T2-10** GET of this repo as a **comment on the successor PR** before merge; the GET is a read, not a #297 grant, and not something in-repo CI can do. Mandatory; do not dismiss then skip. | S0 files on the successor tip. S1 already on the base. |
 | **S3** | Leftover-complete: one dated leftover comment with (1) **repo admin of `code/tradair-landing`** (distinct from the S2 pusher) protection GET six flags, (2) dedicated plant-check `{n}` on `docs/_codeowners-plant-check.txt` + JSON, (3) four-path `test -f` fails — **T2-1 last**. Does **not** reopen `#2`. Four-path absence on `main` is not leftover-complete. Not `#2`, not `#1`. | S0+S2 merged to `main` (S1 already there). Tracked on the leftover issue in this repo. |
@@ -978,8 +990,10 @@ All must be true on the merged successor tip. Land does **not** wait for S3.
    the SHA **named in the independent-review comment** (no Status
    exception; that file has no Status line). Merged tip contains
    `docs/adr/0001-remove-catchall-codeowners.md` byte-identical to that
-   SHA except the single Status flip `Proposed` → `Accepted` on the
-   **product** tip (not a Status-only successor on `cac-design-issue-2`).
+   SHA except the single Status value line `Proposed (` → `Accepted (`
+   (identical suffix; author-pass paragraphs below that line are not
+   flipped) on the **product** tip (not a Status-only successor on
+   `cac-design-issue-2`).
    README relative links to those paths resolve. Do not merge a README
    that points at those paths until they exist on that tip. Implementer
    must not pick `0197f8c`, `590fd76`, or a different successor SHA.
