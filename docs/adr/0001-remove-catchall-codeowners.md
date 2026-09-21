@@ -21,10 +21,14 @@ substitute for the named SHA.
 `docs/` files on the product tip are byte-identical to the named SHA except
 that allowed Status line.
 
-Overview (merge gate, runtime): [`architecture.md`](../architecture.md). Do
-not copy that table here. **T2** there is three groups: protection GET (six
-flags), merge procedure (**T2-4**), tree contracts (**T2-1**, **T2-6**,
-**T2-7**).
+Overview (merge gate, runtime): [`architecture.md`](../architecture.md) is
+the standing T2 contract after land. Do not copy that table here. **T2**
+there is three groups: protection GET (six flags), merge procedure
+(**T2-4**), tree contracts (**T2-1**, **T2-6**, **T2-7**). Occupying-PR
+procedure (merge-relevant tip, ghost `cc21b56`, received-the-tip /
+successor close-without-merge), design-branch transport
+(`cac-design-issue-2`), Status-line flip, and the CI-enablement iid gap
+live **only** in this ADR. Do not restate them in architecture.
 
 Sister CAC autoland work is
 [#429](https://git.cl8y.com/PlasticDigits/cl8y-agent-control/issues/429).
@@ -716,9 +720,14 @@ not this contract). Do not require that stale case to pass as a land gate.
    `git grep -n '^\\.\\* @'` matches nothing even while the catch-all file
    exists; the unescaped `git grep -nE '^\.\* @'` hits this ADR after a
    correct delete).
-2. **Existing contributor checks (land).** Do not require a Woodpecker run
-   that this tree cannot post. Do not treat empty commit statuses as
-   leftover-complete. Do not treat `src/App.test.js` as **T2-3**.
+2. **Existing contributor checks (land).** In-repo only: do not treat
+   `react-scripts test` / `react-scripts build` / leftover
+   `src/App.test.js` as **T2-3**. Do not treat empty commit statuses as
+   leftover-complete or as **T2-3**. Do not add `.woodpecker.yaml` /
+   `.woodpecker/` in this diff. Host merge still waits on Tests item 9 /
+   land criterion 7 (`ci/woodpecker/pr/woodpecker` success on the product
+   tip). That wait is owned by the S2 CI-enablement issue, not by this
+   ticket implementing Woodpecker.
 3. **Protection (leftover-complete, operator read).** Repo admin of
    `code/tradair-landing` attests dated JSON:
    `GET .../branch_protections` `main` rule equals the six architecture

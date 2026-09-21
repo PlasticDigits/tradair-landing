@@ -11,12 +11,8 @@ architecture.
 Catch-all `CODEOWNERS` removal is decided in
 [ADR 0001](adr/0001-remove-catchall-codeowners.md)
 ([#2](https://git.cl8y.com/code/tradair-landing/issues/2)); do not duplicate
-that narrative. Vehicle **B** copies this file and ADR 0001 onto the product
-PR so `main` holds the standing T2 contract (Status line may flip to
-Accepted on that tip). Design branch `cac-design-issue-2`
-is transport only. Merge-relevant occupying tip is
-`GET .../pulls/2` `head.sha` / `refs/heads/chore/remove-catchall-codeowners`,
-not PR `/files` ghost `cc21b56`.
+that narrative. Land vehicle, occupying PR, successor close-without-merge,
+and design-branch transport live only in that ADR.
 
 ## Runtime
 
@@ -26,8 +22,8 @@ not PR `/files` ghost `cc21b56`.
 | Chain | BSC. Sale / token addresses in `src/constants/smart-contracts.js`. Not this ticket. |
 | Host | Static site at `traken.xyz`. Git history records Render builds (`.npmrc` `legacy-peer-deps`). **No** in-tree `render.yaml`. `public/_redirects` is the SPA fallback. |
 | Secrets | WalletConnect / RPC if any are host-side. Not this ticket. |
-| CI file | None. No `.woodpecker.yaml` / `.woodpecker/`. No `.gitlab-ci.yml`. Public `GET .../branches/main` (2026-09-21) already requires `ci/woodpecker/pr/woodpecker`. |
-| Tests | `src/App.test.js` is the leftover CRA “learn react” case. Do not grow #2 into a CODEOWNERS harness. |
+| CI file | None. No `.woodpecker.yaml` / `.woodpecker/`. No `.gitlab-ci.yml`. Required host context name (public `GET .../branches/main`, 2026-09-21): `ci/woodpecker/pr/woodpecker`. |
+| Tests | `src/App.test.js` is leftover CRA smoke, not **T2-3**. |
 
 ```mermaid
 flowchart LR
@@ -75,7 +71,8 @@ repo.
 Unauthenticated `GET /api/v1/repos/code/tradair-landing/branches/main`
 (2026-09-21) already returns this **public** slice. It is **not** the
 six-flag leftover GET. Do **not** map `user_can_push` to **T2-2**
-(`enable_push`):
+(`enable_push`). The dated context name below is the required Woodpecker
+check (**T2-3**):
 
 ```json
 {
@@ -87,10 +84,10 @@ six-flag leftover GET. Do **not** map `user_can_push` to **T2-2**
 }
 ```
 
-`enable_status_check` and the context list already match **T2-8** / **T2-3**
-for land planning. **T2-10**, **T2-5**, and `enable_push` are **absent**
-from this object; leftover-complete and the T2-9/T2-10 land GET stay
-fail-closed **admin** GETs.
+`enable_status_check` and the context list already match **T2-8** / **T2-3**.
+**T2-10**, **T2-5**, and `enable_push` are **absent** from this object;
+leftover-complete and the T2-9/T2-10 land GET stay fail-closed **admin**
+GETs.
 
 #### Protection GET (six flags)
 
@@ -113,9 +110,7 @@ Force-push allowlist fields (if the host exposes them) and
 [cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48),
 not this ticket.
 
-A leftover official CODEOWNERS request on an open PR (including
-[#2](https://git.cl8y.com/code/tradair-landing/pulls/2) and
-[#1](https://git.cl8y.com/code/tradair-landing/pulls/1)) is non-blocking
+A leftover official CODEOWNERS request on an open PR is non-blocking
 **only if** a dated **admin** GET of **this** repo’s `main` rule shows
 **T2-9** and **T2-10**. Public `required_approvals: 0` on `branches/main` is
 not that GET. If `block_on_official_review_requests` is still `true` here,
@@ -124,17 +119,13 @@ merge is 405; that stop is a
 dependency, not a silent implement stop. Do not infer those two flags from
 fleet #48.
 
-This tree had **no** `.woodpecker.yaml` / `.woodpecker/` on `main` when #2 was
-filed; commit `d2d09db` has **empty** commit statuses (`[]`). Public
-`GET .../branches/main` (2026-09-21) already requires
-`ci/woodpecker/pr/woodpecker` (**T2-8** / **T2-3**). Adding a pipeline is
-**not** ADR 0001. Do not copy hello’s yaml. Product tip can be pushed; merge
-of #2 **waits** on that context’s success on **that** tip. Missing statuses
-are a pre-existing host/CI gap, not a reason to keep catch-all CODEOWNERS,
-fake a context, or `force_merge`. No CI-enablement iid exists in this repo
-today; **the S2 implementer** opens one in `code/tradair-landing` before
-that wait is called “a named CI issue.” File-delete + docs on the tip does
-not satisfy the status.
+This tree has **no** `.woodpecker.yaml` / `.woodpecker/`. Adding a pipeline
+is **not** this standing contract (ADR 0001 non-goal). Do not copy hello’s
+yaml. Merge of a PR into `main` **waits** on `ci/woodpecker/pr/woodpecker`
+success on **that** tip (**T2-8** / **T2-3**). Missing statuses are a
+host/CI gap, not a reason to keep or restore catch-all CODEOWNERS, fake a
+context, or `force_merge`. CI-enablement ownership is ADR 0001, not a
+pipeline in this tree.
 
 #### Merge procedure
 
@@ -153,26 +144,25 @@ not satisfy the status.
 Forgejo loads CODEOWNERS from `pr.BaseRepo.DefaultBranch`, first existing file
 among `CODEOWNERS`, `docs/CODEOWNERS`, `.gitea/CODEOWNERS`, and
 `.forgejo/CODEOWNERS` (Go-regexp, not GitHub globs; `.forgejo/` added in
-forgejo#8773; `.gitea/` remains in the walk). Plants continue while
-`.* @code/maintainers` remains on `main`. After ADR 0001 lands, **T2-1**
-holds. None of those four paths may contain a reviewer rule for any pattern
-(ADR 0001 Decision 2). Do not leave an empty or comments-only file; Forgejo
-still parses it.
+forgejo#8773; `.gitea/` remains in the walk). **T2-1** is the standing rule:
+those four paths are **absent** (ADR 0001). None of them may contain a
+reviewer rule for any pattern (ADR 0001 Decision 2). Do not leave an empty
+or comments-only file; Forgejo still parses it.
 
 ```mermaid
 flowchart LR
-  PR[Pull request into main] --> WP["Land wait: ci/woodpecker/pr/woodpecker success on that tip"]
+  PR[Pull request into main] --> WP["Merge wait: ci/woodpecker/pr/woodpecker success on that tip"]
   WP --> MERGE[Do: merge SHA-pinned]
   MERGE --> MAIN[protected main]
   MAIN --> HOST[Existing static host follow]
 ```
 
-This flowchart is the **land** wait. Public `GET .../branches/main`
-(2026-09-21) already lists that context. **Leftover-complete** is a separate
-admin GET of the six protection flags; do not treat this diagram as that GET.
+This flowchart is the **merge** wait named by public `GET .../branches/main`
+(2026-09-21). **Leftover-complete** is a separate admin GET of the six
+protection flags; do not treat this diagram as that GET.
 
 `react-scripts test` / `react-scripts build` are contributor checks, not
-**T2-3**.
+**T2-3**. Host merge still waits on the Woodpecker context above.
 
 This tree does not change Forgejo protection JSON, CAC autoland predicates, or
 host app config. Those remain
@@ -190,10 +180,10 @@ src/pages/                 sale + legal
 src/constants/             links, sale/token addresses, ABIs
 public/_redirects          SPA fallback
 STYLE_GUIDE.md             visual identity
-README.md                  product map (S2 pastes ADR 0001 Decision 3 pointer)
+README.md                  product map; Contributing pointer is ADR 0001 Decision 3
 docs/adr/                  versioned decisions
 docs/architecture.md       this file (merge gate T2; not product architecture)
-CODEOWNERS                 catch-all; ADR 0001 deletes it
+CODEOWNERS                 absent (removed by ADR 0001; T2-1)
 ```
 
 ## ADRs
