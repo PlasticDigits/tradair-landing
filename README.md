@@ -137,6 +137,12 @@ _The more successful Traken AI becomes, the more valuable TRAKEN tokens become t
 
 ## 🤝 Contributing
 
+Merge to `main` follows the Forgejo gate in
+[`docs/architecture.md`](docs/architecture.md) (**T2** only: no direct
+push, required context `ci/woodpecker/pr/woodpecker`, SHA-pinned
+`Do: merge`, no `force_merge`). The catch-all `CODEOWNERS` delete is
+[ADR 0001](docs/adr/0001-remove-catchall-codeowners.md).
+
 We welcome contributions from the community! Please read our contribution guidelines and follow the established code style defined in our style guide.
 
 1. Fork the repository
