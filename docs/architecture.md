@@ -11,7 +11,7 @@ architecture.
 Catch-all `CODEOWNERS` removal is decided in
 [ADR 0001](adr/0001-remove-catchall-codeowners.md)
 ([#2](https://git.cl8y.com/code/tradair-landing/issues/2)); do not duplicate
-that narrative. Land vehicle, occupying PR, successor close-without-merge,
+that narrative. Successor product PR after merged S1-only `#2`, leftover S3,
 and design-branch transport live only in that ADR.
 
 ## Runtime
@@ -86,8 +86,7 @@ check (**T2-3**):
 
 `enable_status_check` and the context list already match **T2-8** / **T2-3**.
 **T2-10**, **T2-5**, and `enable_push` are **absent** from this object;
-leftover-complete and the T2-9/T2-10 land GET stay fail-closed **admin**
-GETs.
+leftover-complete stays a fail-closed **admin** GET of these six flags.
 
 #### Protection GET (six flags)
 
