@@ -19,9 +19,9 @@ and design-branch transport live only in that ADR.
 | Layer | Choice |
 |-------|--------|
 | App | CRA (`react-scripts` 5) + React 19. Routes in `src/App.js`: `/`, `/sale`, `/privacy`, `/terms`, `/cookies`, `/disclaimer`, `/ai-bias`. |
-| Chain | BSC. Sale / token addresses in `src/constants/smart-contracts.js`. Not this ticket. |
+| Chain | BSC. Sale / token addresses in `src/constants/smart-contracts.js`. ADR 0001 non-goal; do not change from this tree. |
 | Host | Static site at `traken.xyz`. Git history records Render builds (`.npmrc` `legacy-peer-deps`). **No** in-tree `render.yaml`. `public/_redirects` is the SPA fallback. |
-| Secrets | WalletConnect / RPC if any are host-side. Not this ticket. |
+| Secrets | WalletConnect / RPC if any are host-side. ADR 0001 non-goal; do not change from this tree. |
 | CI file | None. No `.woodpecker.yaml` / `.woodpecker/`. No `.gitlab-ci.yml`. Required host context name (public `GET .../branches/main`, 2026-09-21): `ci/woodpecker/pr/woodpecker`. |
 | Tests | `src/App.test.js` is leftover CRA smoke, not **T2-3**. |
 
@@ -46,11 +46,11 @@ deploy grant.
 Official CODEOWNERS review is **not** a merge gate. Decision, slices, tests,
 rollback: [ADR 0001](adr/0001-remove-catchall-codeowners.md). Host write-up:
 [cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48)
-and forgejo PR **#50** (`docs/INVARIANTS.md` + ADR 0003 item 8). The issue
-body points at forgejo `docs/INVARIANTS.md`, not a file in this tree. Do not
-fork INVARIANTS here. Deploy / spend / custody / policy expansion:
+and forgejo PR **#50** (`docs/INVARIANTS.md` + ADR 0003 item 8). Forgejo
+`docs/INVARIANTS.md` is not a file in this tree. Do not fork INVARIANTS
+here. Deploy / spend / custody / policy expansion:
 [agent-control #297](https://git.cl8y.com/PlasticDigits/cl8y-agent-control/issues/297)
-— this ticket is none of those. Sister CAC autoland predicates are
+— ADR 0001 non-goal; not merge-gate. Sister CAC autoland predicates are
 [#429](https://git.cl8y.com/PlasticDigits/cl8y-agent-control/issues/429), not
 this SPA. [hello#15](https://git.cl8y.com/code/hello/pulls/15) is the fleet
 canary, not a local iid.
@@ -107,17 +107,18 @@ protection field.
 of a PR branch.” It is **not** `user_can_push` on public `GET .../branches/main`.
 Force-push allowlist fields (if the host exposes them) and
 `apply_to_admins` stay
-[cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48),
-not this ticket.
+[cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48).
+ADR 0001 non-goal; do not change from this tree.
 
 A leftover official CODEOWNERS request on an open PR is non-blocking
-**only if** a dated **admin** GET of **this** repo’s `main` rule shows
-**T2-9** and **T2-10**. Public `required_approvals: 0` on `branches/main` is
-not that GET. If `block_on_official_review_requests` is still `true` here,
-merge is 405; that stop is a
+**only** after a dated **admin** GET of **this** repo’s `main` rule shows
+**T2-9** and **T2-10**. Dismissing the request does not skip that GET.
+Public `required_approvals: 0` on `branches/main` is not that GET. If
+`block_on_official_review_requests` is still `true` here, merge is 405;
+that stop is a
 [cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48)
 dependency, not a silent implement stop. Do not infer those two flags from
-fleet #48.
+fleet #48 or `code/hello`.
 
 This tree has **no** `.woodpecker.yaml` / `.woodpecker/`. Adding a pipeline
 is **not** this standing contract (ADR 0001 non-goal). Do not copy hello’s
@@ -138,7 +139,7 @@ pipeline in this tree.
 | ID | Rule |
 | --- | --- |
 | **T2-1** | `test -f` fails on `CODEOWNERS`, `docs/CODEOWNERS`, `.gitea/CODEOWNERS`, and `.forgejo/CODEOWNERS`. |
-| **T2-6** | Static host stays `main`-follow (existing Render dashboard if any). This ticket does not add PR deploys, `render.yaml`, rotate sale/token addresses, edit `src/` / `public/` / `package.json` / `package-lock.json` / `.npmrc` / `.nvmrc`, or treat a host rebuild as leftover-complete. Host secrets never attach to `pull_request` events. |
+| **T2-6** | Static host stays `main`-follow (existing Render dashboard if any). ADR 0001 non-goal; do not change from this tree: no PR deploys, no `render.yaml`, no rotating sale/token addresses, no edits to `src/` / `public/` / `package.json` / `package-lock.json` / `.npmrc` / `.nvmrc`, and do not treat a host rebuild as leftover-complete. Host secrets never attach to `pull_request` events. |
 | **T2-7** | This tree does not expand CAC merge/deploy/spend/custody policy. |
 
 Forgejo loads CODEOWNERS from `pr.BaseRepo.DefaultBranch`, first existing file

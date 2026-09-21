@@ -10,16 +10,20 @@ standing issue `#2`; the issues URL and the product PR share one number.
 
 **Accepted SHA** = the SHA named in that independent-review comment. It is
 not implementer choice of “this SHA or a successor.” Implement copies the
-two `docs/` files from **that named SHA** onto the product tip. After
-review names this SHA, implement **may** flip **only** the Status line from
-`Proposed` to `Accepted` on the product tip; that one-line flip does not
-require a new design loop. Every other byte of the two files must match the
-named SHA. A Status-only successor invented on `cac-design-issue-2` is not a
-substitute for the named SHA.
+two `docs/` files from **that named SHA** onto the product tip. Occupying /
+`main` tip `d2d09db` is **not** a copy source. After review names this SHA,
+implement **may** flip **only** the Status line of
+`docs/adr/0001-remove-catchall-codeowners.md` from `Proposed` to `Accepted`
+on the **product** tip; that one-line flip does not require a new design
+loop. `docs/architecture.md` must be **fully** byte-identical to the named
+SHA (it has no Status line; do not invent one). Every other byte of the ADR
+must match the named SHA. A Status-only successor invented on
+`cac-design-issue-2` is not a substitute for the named SHA.
 
-`cac-design-issue-2` is never the merge vehicle. Land criterion: the two
-`docs/` files on the product tip are byte-identical to the named SHA except
-that allowed Status line.
+`cac-design-issue-2` is never the merge vehicle. Land criterion:
+`docs/architecture.md` on the product tip is byte-identical to the named
+SHA with no exceptions; the ADR is byte-identical except that allowed
+Status flip on the product tip.
 
 Overview (merge gate, runtime): [`architecture.md`](../architecture.md) is
 the standing T2 contract after land. Do not copy that table here. **T2**
@@ -175,12 +179,14 @@ Fleet protection under #48 is described as
 `required_approvals=0` (**T2-9**). Public `required_approvals: 0` on
 `branches/main` is **not** that leftover GET. Do **not** treat the leftover
 request on `#2` as non-blocking from fleet values or from this public
-slice. It is non-blocking **only if** a dated **admin** GET of **this**
-repo’s `main` rule shows **T2-9** and **T2-10**. If **T2-10** is still
-`true` here, merge is 405; that stop is a
+slice. A dated **admin** GET of **this** repo’s `main` rule showing
+**T2-9** and **T2-10** is **mandatory** before merge of this chore (known
+plants on `#2` and `#1`; dismissing them does not skip the GET). If
+**T2-10** is still `true` here, merge is 405; that stop is a
 [cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48)
 dependency, not a silent implement stop. Do not land `#2` on an unverified
-admin GET. That leftover request also must not be treated as S3 evidence.
+admin GET. Public `branches/main` / fleet `#48` / `code/hello` do not
+count. That leftover request also must not be treated as S3 evidence.
 
 Ghost commit `cc21b56907629875a57d92f5c9b50992b6eadf18` remains in the PR
 index (`/files`, `/commits`) while the occupying ref is `d2d09db`. Source
@@ -271,10 +277,14 @@ before land calls the wait “a named CI issue” (Decision 7).
    `docs/adr/0001-remove-catchall-codeowners.md` and `docs/architecture.md`
    from **the SHA named in the independent-review comment** onto that
    **same tip**. Recipe must `git fetch origin cac-design-issue-2` so that
-   SHA exists locally. After review names the SHA, implement **may** flip
-   **only** the Status line from `Proposed` to `Accepted` on the product
-   tip (no new design loop). Do not invent a Status-only successor instead
-   of using the named SHA.
+   SHA exists locally and `git merge-base --is-ancestor` confirms it is a
+   reachable commit on that transport branch, not an arbitrary object.
+   Occupying `d2d09db` is not a copy source. After review names the SHA,
+   implement **may** flip **only** the Status line of the ADR from
+   `Proposed` to `Accepted` on the **product** tip (no new design loop).
+   `docs/architecture.md` must stay fully byte-identical (no Status line;
+   do not invent one). Do not invent a Status-only successor on
+   `cac-design-issue-2` instead of using the named SHA.
 
    Then add this README pointer under the existing `## 🤝 Contributing`
    heading (keep the product map and the numbered fork/PR steps). Link
@@ -291,15 +301,18 @@ before land calls the wait “a named CI issue” (Decision 7).
    ```
 
    Do not merge a README that points at those paths until they exist on
-   that tip. The two `docs/` files on the product tip must be
-   byte-identical to the named SHA except the allowed Status line. Do not
-   rewrite `STYLE_GUIDE.md` / `TODO.md` / visitor copy.
+   that tip. On the product tip, `docs/architecture.md` must be fully
+   byte-identical to the named SHA; the ADR must be byte-identical except
+   the allowed Status line. Do not rewrite `STYLE_GUIDE.md` / `TODO.md` /
+   visitor copy.
 4. **Leave** already-planted official requests on open PRs (including #2 and
-   #1). Treat them as non-blocking **only if** a dated **admin** GET of
-   `code/tradair-landing` `main` shows **T2-9** and **T2-10**. Do not dismiss
-   them from CAC. Human dismiss is optional leftover, not AC. If **T2-10**
-   is `true`, stop; that is a forge #48 dependency, not a silent implement
-   stop.
+   #1). A dated **admin** GET of **this** repo’s `main` rule showing **T2-9**
+   and **T2-10** is **mandatory** before merge of this chore. Known plants
+   (team `maintainers`, review `id: 214` on `#2`; same team plant on `#1`)
+   do not skip it. Human dismiss is optional leftover, not AC, and does
+   **not** skip the GET. Do not dismiss them from CAC. If **T2-10** is
+   `true`, stop; that is a forge #48 dependency, not a silent implement
+   stop. Public `branches/main` / fleet `#48` / `code/hello` do not count.
 5. **Do not** PATCH branch protection from this repository.
 6. **Split land from leftover-complete.** Product PR `#2` (or successor) is
    S0+S1+S2 (vehicle **B**). S3 lives on the leftover issue S2 opens in this
@@ -347,11 +360,11 @@ before land calls the wait “a named CI issue” (Decision 7).
 
 | Surface | Change |
 | --- | --- |
-| `CODEOWNERS` (root) | Remove file. Not done at this design SHA (`d2d09db` still has the six-line catch-all). Do not ship ghost `cc21b56` as the delete. |
+| `CODEOWNERS` (root) | Remove file. Delete not done on this design-transport SHA **or** on occupying `d2d09db` (both still have the six-line catch-all). Occupying tip is `d2d09db`, not this SHA. Do not ship ghost `cc21b56` as the delete. If independent review later names a SHA, implementers copy **that** SHA, not `d2d09db`. |
 | `docs/CODEOWNERS`, `.gitea/CODEOWNERS`, `.forgejo/CODEOWNERS` | Must remain absent (no empty file). |
-| `docs/adr/0001-remove-catchall-codeowners.md`, `docs/architecture.md` | Copy from the SHA named in independent review onto the product PR so the merged tip is S0+S1+S2 (byte-identical except allowed Status flip). Standing T2 contract lands with the delete. |
+| `docs/adr/0001-remove-catchall-codeowners.md`, `docs/architecture.md` | Copy from the SHA named in independent review onto the product PR so the merged tip is S0+S1+S2. `docs/architecture.md` fully byte-identical to that SHA. ADR byte-identical except the single Status flip `Proposed` → `Accepted` on the **product** tip (not a Status-only successor on `cac-design-issue-2`). Standing T2 contract lands with the delete. |
 | Forgejo PR review interface | After land, a **dedicated** plant-check PR against `main` must not get an official CODEOWNERS team request. |
-| Branch protection API | No write from this ticket. Operator leftover-complete reads must still match architecture **protection GET** (six flags for the `main` rule). In-repo CI cannot perform that GET. Public `GET .../branches/main` (2026-09-21) is the land Woodpecker wait, not that GET. Land of `#2` while leftover official requests remain additionally requires a dated **admin** GET of **T2-9** and **T2-10** on **this** repo. |
+| Branch protection API | No write from this ticket. Operator leftover-complete reads must still match architecture **protection GET** (six flags for the `main` rule). In-repo CI cannot perform that GET. Public `GET .../branches/main` (2026-09-21) is the land Woodpecker wait, not that GET. Dated **admin** GET of **this** repo’s `main` rule showing **T2-9** and **T2-10** is **mandatory** before merge of this chore. Attested by **repo admin of `code/tradair-landing`**, distinct from the S2 pusher. The GET is a read, not a #297 grant. **T2-10** `true` → stop on forge `#48`. Do not dismiss then skip GET. Fleet `#48` / `code/hello` / public `branches/main` do not count. |
 | `.woodpecker.yaml` / `.woodpecker/` | Must remain absent in this ticket. Do not add one to unblock merge. S2 opens the CI-enablement issue; it does not add the pipeline. |
 | `src/`, `public/`, `package.json`, `package-lock.json`, `.npmrc`, `.nvmrc`, sale/token addresses | Unchanged. |
 | README | Mandatory on the product PR: paste Decision 3 pointer; product map stays README. Relative links to ADR 0001 / architecture, which exist on that same tip. |
@@ -368,9 +381,11 @@ IDs live in [`architecture.md`](../architecture.md). This ADR changes **T2-1**
 **reads** the six protection flags (**T2-2**, **T2-8**, **T2-3**, **T2-9**,
 **T2-10**, **T2-5**) via **admin** GET. Public `GET .../branches/main`
 already shows **T2-8** / **T2-3** for land planning; it does not prove the
-six GET flags. Land **does** require a dated **admin** GET of **T2-9** and
-**T2-10** on this repo before treating leftover official requests as
-non-blocking. Merge procedure remains **T2-4**. Host follow and CAC policy
+six GET flags. Land **requires** a dated **admin** GET of **T2-9** and
+**T2-10** on this repo before merge of this chore (mandatory; not gated on
+whether leftover official requests remain; dismiss does not skip). Attested
+by **repo admin of `code/tradair-landing`**, distinct from the S2 pusher.
+Merge procedure remains **T2-4**. Host follow and CAC policy
 remain **T2-6** and **T2-7**. **T2-2** is `enable_push == false` (no direct
 push); it does not claim force-push policy and is not `user_can_push`.
 
@@ -452,10 +467,12 @@ direct `main`.
    {successor} if #2 was closed without merge). This issue does not close
    #2. Opened in code/tradair-landing before that merge.
 
-   1. Dated operator GET of this repo's `main` protection rule equals the six
+   1. Dated GET by **repo admin of `code/tradair-landing`** (distinct from
+      the S2 pusher) of this repo's `main` protection rule equals the six
       T2 protection flags (T2-2, T2-8, T2-3, T2-9, T2-10, T2-5) in
       docs/architecture.md. Admin GET .../branch_protections (unauthenticated
-      is 401). Attest the JSON here. Not copied from code/hello. Not the
+      is 401). The GET is a read, not a #297 grant; in-repo CI cannot do it.
+      Attest the JSON here. Not copied from code/hello. Not the
       public GET .../branches/main slice. A GET recorded before a later
       template re-copy does not count.
 
@@ -482,10 +499,12 @@ direct `main`.
    delete root `CODEOWNERS`, paste the Decision 3 README pointer with
    relative links to those two paths. `cac-design-issue-2` stays the
    review/transport branch; do not open it as the product PR; do not merge
-   it as docs-only first. Do not merge a README that points at those paths
-   until they exist on that tip. The two `docs/` files on the product tip
-   must be byte-identical to that named SHA except the allowed Status flip.
+   it as docs-only first.    Do not merge a README that points at those paths
+   until they exist on that tip. On the product tip, `docs/architecture.md`
+   must be fully byte-identical to that named SHA; the ADR must be
+   byte-identical except the allowed Status flip on the **product** tip.
    Head `d2d09db` is not that tip. Ghost `cc21b56` is not that tip.
+   Occupying `d2d09db` is not a copy source.
 
    Occupying branch today equals `main`. Implement may fast-forward
    `chore/remove-catchall-codeowners` from `d2d09db` (no `--force-with-lease`
@@ -495,13 +514,25 @@ direct `main`.
    git fetch origin cac-design-issue-2 chore/remove-catchall-codeowners main
    DESIGN_SHA=<sha named in the independent-review comment>
    git rev-parse --verify "${DESIGN_SHA}^{commit}"
+   git merge-base --is-ancestor "$DESIGN_SHA" origin/cac-design-issue-2
+   test "$(git rev-parse "$DESIGN_SHA")" != "$(git rev-parse origin/main)"
    git checkout -B chore/remove-catchall-codeowners origin/chore/remove-catchall-codeowners
    test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"
    git checkout "$DESIGN_SHA" -- docs/adr/0001-remove-catchall-codeowners.md docs/architecture.md
-   # Optional after review named this SHA: flip only the Status line
-   # Proposed -> Accepted in the ADR. No other docs edits.
+   # Optional after review named this SHA: flip only the Status line of the
+   # ADR Proposed -> Accepted on this product tip. No architecture edits.
+   # No Status-only successor on cac-design-issue-2.
+   # architecture: fully byte-identical (no Status exception).
+   git diff --exit-code "$DESIGN_SHA" -- docs/architecture.md
+   # ADR: byte-identical except Status Proposed -> Accepted (product tip).
+   cmp -s \
+     <(git show "$DESIGN_SHA:docs/adr/0001-remove-catchall-codeowners.md" | sed '1,12 s/^Proposed (/STATUS (/; 1,12 s/^Accepted (/STATUS (/') \
+     <(sed '1,12 s/^Proposed (/STATUS (/; 1,12 s/^Accepted (/STATUS (/' docs/adr/0001-remove-catchall-codeowners.md)
    git rm CODEOWNERS
    # README: paste Decision 3 pointer under ## Contributing; keep product map.
+   grep -F '[`docs/architecture.md`](docs/architecture.md)' README.md
+   grep -F '[ADR 0001](docs/adr/0001-remove-catchall-codeowners.md)' README.md
+   grep -F 'ci/woodpecker/pr/woodpecker' README.md
    git add README.md docs
    git commit -m "$(cat <<'EOF'
    chore: remove catch-all CODEOWNERS (issue 2).
@@ -528,10 +559,13 @@ direct `main`.
    merge and open `{successor}` (Decision 8). Do not leave empty `#2` open.
 
 4. Open PRs created while the file existed (#2, #1) may still show an
-   official team request. Non-blocking **only if** a dated **admin** GET of
-   this repo shows **T2-9** and **T2-10**. No bulk dismiss required to land
-   `#2` under that GET. If **T2-10** is `true`, stop; that is a forge #48
-   dependency, not a silent implement stop; merge is 405.
+   official team request. A dated **admin** GET of this repo showing
+   **T2-9** and **T2-10** is **mandatory** before merge (**repo admin of
+   `code/tradair-landing`**, distinct from the S2 pusher). The GET is a
+   read, not a #297 grant; in-repo CI cannot perform it. Do not skip if
+   plants were dismissed. If **T2-10** is `true`, stop; that is a forge #48
+   dependency, not a silent implement stop; merge is 405. Public
+   `branches/main` / fleet `#48` / `code/hello` do not count.
 5. Do not restore the file from `docs/templates/CODEOWNERS` in cl8y-forgejo;
    that template is owned by #48.
 6. Merge of `#2` waits on `ci/woodpecker/pr/woodpecker` success on the
@@ -555,18 +589,22 @@ lists `enable_status_check: true` and
 `GET .../statuses/{product-tip-sha}` includes that context in a success
 state. Empty statuses on `d2d09db` do not count.
 
-**Land GET (T2-9 / T2-10, this repo, admin).** Before merging `#2` while
-leftover official requests remain, repo admin of `code/tradair-landing`
-attests a dated JSON of the `main` rule showing **T2-9**
+**Land GET (T2-9 / T2-10, this repo, admin).** **Mandatory** before merge of
+this chore. **Repo admin of `code/tradair-landing`** (distinct from the S2
+pusher) attests a dated JSON of the `main` rule showing **T2-9**
 (`required_approvals == 0`) and **T2-10**
-(`block_on_official_review_requests == false`). Same endpoints as the
-leftover-complete GET. Fleet #48 / `code/hello` / public `branches/main` is
-not this GET. If **T2-10** is `true`, do not land; that stop is a forge #48
-dependency.
+(`block_on_official_review_requests == false`). The GET is a read, not a
+#297 grant, and not something in-repo CI can do. Known plants on `#2` and
+`#1` (Decision 4) do not skip it. Dismiss then skip GET is forbidden. Same
+endpoints as the leftover-complete GET. Fleet #48 / `code/hello` / public
+`branches/main` is not this GET. If **T2-10** is `true`, do not land; that
+stop is a forge #48 dependency, not a silent implement stop.
 
-**Protection (operator, leftover-complete).** Repo admin of
-`code/tradair-landing` attests dated JSON of the six protection flags for the
-`main` rule onto the leftover issue in this repo.
+**Protection (operator, leftover-complete).** **Repo admin of
+`code/tradair-landing`** (distinct from the S2 pusher) attests dated JSON of
+the six protection flags for the `main` rule onto the leftover issue in this
+repo. The GET is a read, not a #297 grant, and not something in-repo CI can
+do. Endpoint:
 `GET /api/v1/repos/code/tradair-landing/branch_protections` (array; pick
 `rule_name == "main"`) or
 `GET /api/v1/repos/code/tradair-landing/branch_protections/main`.
@@ -578,7 +616,6 @@ compare the Merge API / **T2-4** row (not a protection field). Do not treat
 `enable_push == false` as a force-push read. Do not treat `user_can_push` as
 **T2-2**. A green `react-scripts test`, empty commit statuses, a Render
 deploy, or the public `branches/main` slice does not satisfy this read.
-In-repo CI cannot perform this GET.
 
 **Plant-check (dedicated post-merge PR, leftover-complete).** Recipe is Tests
 item 4. Probe path is `docs/_codeowners-plant-check.txt` only. Fail-closed
@@ -662,11 +699,12 @@ follow), not leftover-complete.
 | Cherry-pick / reset onto / merge `cc21b56` | Ghost S1-only tip. Fails land criteria 2–5. Use live ref `d2d09db` + S0+S1+S2. |
 | Trust `/files` or `/commits` over `head.sha` | Lands the orphan object. Merge-relevant tip is `GET .../pulls/2` `head.sha` and the occupying ref. |
 | README links ADR/architecture but those files are not on the same tip | 404 after merge. Land fails criterion 2. Vehicle **B**: copy both files onto the product PR before merging README. |
+| Product tip ships S0+S1 without the Decision 3 README pointer | Fail land criterion 3. Recipe greps the pointer before `git add README.md`. |
 | Copy left in `docs/`, `.gitea/`, or `.forgejo/` (including empty/comments-only) | Forgejo still loads the first existing path and may plant. Land fails **T2-1**; delete those paths too (none exist on current `main`). |
 | Whole-tree `git grep` for `.* @` | Hits this ADR after a correct delete. Use the pathspec in Tests item 1. |
 | cl8y-forgejo migrate/apply re-copies a template | Sister-repo race ([cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48) `_ensure_codeowners`). Out of this slice. If a later apply re-adds the file, leftover-complete is **not** done: delete again via PR, then one new dated leftover comment with all three leftover-complete items, **T2-1 last**. A GET or plant-check from before a re-copy does not count. Never direct-push `main`. |
 | Plant-check → re-copy → stale-green GET | Void. Leftover-complete requires one dated leftover comment with (1) protection GET, (2) plant-check `{n}` + JSON, (3) four-path `test -f` fails — **T2-1 last** (or all three timestamps in one attest). |
-| Official request leftover on #2 or #1 | Non-blocking **only if** dated **admin** GET of this repo shows **T2-9** / **T2-10**. If **T2-10** is `true`, merge is 405; stop is a forge #48 dependency, not a silent implement stop; do not `force_merge`; optional human dismiss is not a CAC substitute. Not S3 evidence. Not a rollback signal. |
+| Official request leftover on #2 or #1 | Non-blocking only after the **mandatory** dated **admin** GET of this repo shows **T2-9** / **T2-10**. Dismiss does not skip the GET. If **T2-10** is `true`, merge is 405; stop is a forge #48 dependency, not a silent implement stop; do not `force_merge`; optional human dismiss is not a CAC substitute. Not S3 evidence. Not a rollback signal. |
 | Treating merge of `#2` as leftover-complete | Merge closes `#2` before S3. Use the leftover issue in this repo. |
 | Leftover issue opened in the wrong repo, or empty | Land fails criterion 5. Open in `code/tradair-landing` with the quoted body. |
 | `#2` does not receive the tip; empty `#2` left open; successor `#3` merged | Merging `#3` closes `#3`, not the chore. Close `#2` without merge; record leftover-tracker + `{successor}` merge as completion. |
@@ -680,17 +718,18 @@ follow), not leftover-complete.
 | Re-adding CODEOWNERS “for safety” in a follow-up | Violates **T2-1**. Reviewers must reject unless a new ADR allowlists path owners. |
 | `src/` / sale addresses / `STYLE_GUIDE.md` / `package.json` sneak into the MR | Fail review. |
 | README treats `docs/architecture.md` as product architecture or stubs the product map | Fail S2. Two architecture docs must not collide. |
-| Implement copies “this SHA or a successor” instead of the SHA named in review | Fail land criterion 2. Accepted SHA is the named SHA. |
+| Implement copies occupying `d2d09db` or “this SHA or a successor” instead of the SHA named in review | Fail land criterion 2. Occupying tip is not the design-transport SHA. Accepted SHA is the named SHA. |
+| `DESIGN_SHA` is an arbitrary object not on `origin/cac-design-issue-2` | Fail land criterion 2. After `git fetch origin cac-design-issue-2`, `git merge-base --is-ancestor "$DESIGN_SHA" origin/cac-design-issue-2` must succeed. Occupying `d2d09db` is not a copy source. |
 | Implement deploys Render, rotates sale/token addresses, or edits `autonomy.rs` / HMAC | Forbidden (#297). |
 
 ## Ordered implementation slices
 
 | Slice | Work | Depends on |
 | --- | --- | --- |
-| **S0** | This design (ADR 0001 + architecture **T2**). Transport on `cac-design-issue-2`. Copy **the SHA named in independent review** onto the product tip; one-line Status flip to Accepted is allowed on that tip. Do not call this tip accepted until independent review names the SHA. `cac-design-issue-2` is never the merge vehicle. | None in `code/tradair-landing`. |
+| **S0** | This design (ADR 0001 + architecture **T2**). Transport on `cac-design-issue-2`. Copy **the SHA named in independent review** onto the product tip (not occupying `d2d09db`). `docs/architecture.md` fully byte-identical. ADR: one-line Status flip `Proposed` → `Accepted` allowed on the **product** tip only. Do not call this tip accepted until independent review names the SHA. `cac-design-issue-2` is never the merge vehicle. | None in `code/tradair-landing`. |
 | **S1** | Delete root `CODEOWNERS`. Confirm `test -f` fails on all four Forgejo paths. Occupying **ref** is `d2d09db`; ignore ghost `cc21b56`. Do not cherry-pick it. | S0 files present on the **same product-PR tip** (not “S0 accepted” alone). |
-| **S2** | README pointer on that **same** tip (paste Decision 3). Open the leftover issue in **`code/tradair-landing` only**, before merge, with the body template under Migration. **The S2 implementer** also opens the CI-enablement issue in this repo before treating the Woodpecker wait as a named CI issue. Attest dated **admin** **T2-9** / **T2-10** GET of this repo before treating leftover official requests as non-blocking. | S0 files on the same tip as S1. Same PR as S1. |
-| **S3** | Leftover-complete: one dated leftover comment with (1) admin protection GET six flags, (2) dedicated plant-check `{n}` on `docs/_codeowners-plant-check.txt` + JSON, (3) four-path `test -f` fails — **T2-1 last**. Does **not** close `#2`. | S0+S1+S2 merged to `main`. Tracked on the leftover issue in this repo. |
+| **S2** | README pointer on that **same** tip (paste Decision 3; recipe asserts the pointer before `git add README.md`). Open the leftover issue in **`code/tradair-landing` only**, before merge, with the body template under Migration. **The S2 implementer** (pusher of the S0+S1+S2 tip) also opens the CI-enablement issue in this repo before treating the Woodpecker wait as a named CI issue. **Repo admin of `code/tradair-landing`** (distinct from the S2 pusher) attests the dated **admin** **T2-9** / **T2-10** GET of this repo before merge; the GET is a read, not a #297 grant, and not something in-repo CI can do. Mandatory; do not dismiss then skip. | S0 files on the same tip as S1. Same PR as S1. |
+| **S3** | Leftover-complete: one dated leftover comment with (1) **repo admin of `code/tradair-landing`** (distinct from the S2 pusher) protection GET six flags, (2) dedicated plant-check `{n}` on `docs/_codeowners-plant-check.txt` + JSON, (3) four-path `test -f` fails — **T2-1 last**. Does **not** close `#2`. | S0+S1+S2 merged to `main`. Tracked on the leftover issue in this repo. |
 
 PR `#2` ships **S0+S1+S2** if it received the tip; otherwise `{successor}`
 does, after `#2` is closed without merge. S2 depends on S0 files being on the
@@ -728,10 +767,11 @@ not this contract). Do not require that stale case to pass as a land gate.
    land criterion 7 (`ci/woodpecker/pr/woodpecker` success on the product
    tip). That wait is owned by the S2 CI-enablement issue, not by this
    ticket implementing Woodpecker.
-3. **Protection (leftover-complete, operator read).** Repo admin of
-   `code/tradair-landing` attests dated JSON:
+3. **Protection (leftover-complete, operator read).** **Repo admin of
+   `code/tradair-landing`** (distinct from the S2 pusher) attests dated JSON:
    `GET .../branch_protections` `main` rule equals the six architecture
-   **protection GET** flags. Fail if any differ. Not inferred from a green
+   **protection GET** flags. The GET is a read, not a #297 grant; in-repo
+   CI cannot perform it. Fail if any differ. Not inferred from a green
    scanner. Not compared to the Merge API row. Not copied from `code/hello`.
    Not the public `GET .../branches/main` slice. **T2-2** pass is
    `enable_push == false` only (not `user_can_push`).
@@ -758,9 +798,12 @@ not this contract). Do not require that stale case to pass as a land gate.
    if the PR has no changed file, if the changed path is not
    `docs/_codeowners-plant-check.txt`, if reviewers were requested manually,
    or if either GET signal is present after the wait. Do not use `#2`. Do
-   not use `#1`. Do not use “the next natural PR.” Who opens the PR: anyone
+   not use `#1`. Do not use “the next natural PR.”    Who opens the PR: anyone
    who can create a PR on `code/tradair-landing`. Who GETs protection
-   (item 3): repo admin; not `react-scripts`; not Render.
+   (item 3) and the land GET (item 7): **repo admin of
+   `code/tradair-landing`**, distinct from the S2 pusher; not
+   `react-scripts`; not Render; not in-repo CI. The GET is a read, not a
+   #297 grant.
    Leftover-complete attest order is Integration: **T2-1 last**. Do not treat
    a passing GET or plant-check from before a later `_ensure_codeowners` apply
    as done.
@@ -769,10 +812,14 @@ not this contract). Do not require that stale case to pass as a land gate.
 6. **Diff guard (land).** Product PR does not change `src/`, `public/`,
    `package.json`, `package-lock.json`, `.npmrc`, `.nvmrc`, `STYLE_GUIDE.md`,
    `TODO.md`, or add `.woodpecker.yaml` / `render.yaml`.
-7. **Land GET (T2-9 / T2-10).** If leftover official requests remain on `#2`
-   or `#1`, a dated **admin** GET of this repo’s `main` rule shows **T2-9**
-   and **T2-10** before merge. Fail closed if missing or if **T2-10** is
-   `true` (forge #48 dependency, not a silent stop).
+7. **Land GET (T2-9 / T2-10).** Dated **admin** GET of this repo’s `main`
+   rule by **repo admin of `code/tradair-landing`** (distinct from the S2
+   pusher) showing **T2-9** and **T2-10** is **mandatory** before merge.
+   Known plants on `#2` and `#1` do not skip it. Do not dismiss then skip
+   GET. Fail closed if missing or if **T2-10** is `true` (forge #48
+   dependency, not a silent implement stop). Public `branches/main` /
+   fleet `#48` / `code/hello` do not count. The GET is a read, not a
+   #297 grant; in-repo CI cannot perform it.
 8. **README collision (land, S2).** Product PR README still is the product map
    and contains the Decision 3 pointer (architecture **only** for **T2**, ADR
    0001 for the delete). Do not invent a maintainers-as-gate denial.
@@ -795,11 +842,12 @@ not this contract). Do not require that stale case to pass as a land gate.
 - Order: fleet protection already owned by #48 → copy S0 files from the SHA
   named in independent review + delete file + README via one product PR,
   leftover issue open in this repo, CI-enablement issue opened by the S2
-  implementer, dated **admin** **T2-9** / **T2-10** GET of this repo if
-  leftover official requests remain (land) → wait for Woodpecker success on
-  **that** tip → leftover issue remains open → leftover-complete as one dated
-  comment with admin protection GET, plant-check (close without merge), then
-  four-path `test -f` (**T2-1 last**).
+  implementer, dated **admin** **T2-9** / **T2-10** GET of this repo by
+  **repo admin of `code/tradair-landing`** (distinct from the S2 pusher;
+  mandatory, not skipped if plants were dismissed) → wait for Woodpecker
+  success on **that** tip → leftover issue remains open → leftover-complete
+  as one dated comment with admin protection GET, plant-check (close without
+  merge), then four-path `test -f` (**T2-1 last**).
 - Do not weaken **T2-3** / **T2-8** to land #2; do not add the pipeline in
   this diff; do not copy hello’s yaml; do not fake statuses; do not
   `force_merge`.
@@ -844,13 +892,17 @@ All must be true on the merged tip. Land does **not** wait for S3.
 1. `main` has no CODEOWNERS file at the four Forgejo paths: `test -f` fails on
    `CODEOWNERS`, `docs/CODEOWNERS`, `.gitea/CODEOWNERS`, `.forgejo/CODEOWNERS`
    (**T2-1**). Head is not `d2d09db`. Head is not `cc21b56`.
-2. Merged tip contains `docs/adr/0001-remove-catchall-codeowners.md` and
-   `docs/architecture.md` **byte-identical** to the SHA **named in the
-   independent-review comment**, except the Status line may read `Accepted`
-   instead of `Proposed`. README relative links to those paths resolve. Do
-   not merge a README that points at those paths until they exist on that
-   tip. Implementer must not pick a different successor SHA. Recipe
-   `git fetch origin cac-design-issue-2` so `DESIGN_SHA` exists.
+2. Merged tip contains `docs/architecture.md` **fully byte-identical** to
+   the SHA **named in the independent-review comment** (no Status
+   exception; that file has no Status line). Merged tip contains
+   `docs/adr/0001-remove-catchall-codeowners.md` byte-identical to that
+   SHA except the single Status flip `Proposed` → `Accepted` on the
+   **product** tip (not a Status-only successor on `cac-design-issue-2`).
+   README relative links to those paths resolve. Do not merge a README
+   that points at those paths until they exist on that tip. Implementer
+   must not pick occupying `d2d09db` or a different successor SHA. Recipe
+   `git fetch origin cac-design-issue-2` and
+   `git merge-base --is-ancestor "$DESIGN_SHA" origin/cac-design-issue-2`.
 3. README keeps the product map and contains the Decision 3 pointer
    (`docs/architecture.md` **only** for **T2**; ADR 0001 for the delete). It
    does not imply CODEOWNERS is what makes merge trusted. Do not invent a
@@ -868,10 +920,14 @@ All must be true on the merged tip. Land does **not** wait for S3.
    another repo does not satisfy this criterion. Record its iid on the
    product PR. If a successor was required, that leftover issue also records
    that merge of `{successor}` plus this tracker completes the chore.
-6. If leftover official requests remain on `#2` or `#1`, a dated **admin**
-   GET of this repo’s `main` rule shows **T2-9** and **T2-10**. Do not land
-   on an unverified GET. If **T2-10** is `true`, merge is 405; stop is a
-   forge #48 dependency, not a silent implement stop.
+6. Dated **admin** GET of **this** repo’s `main` rule showing **T2-9** and
+   **T2-10** is **mandatory** before merge. Attested by **repo admin of
+   `code/tradair-landing`**, distinct from the S2 pusher. The GET is a
+   read, not a #297 grant; in-repo CI cannot perform it. Do not dismiss
+   then skip GET. Do not land on an unverified GET. If **T2-10** is
+   `true`, merge is 405; stop is a forge #48 dependency, not a silent
+   implement stop. Public `branches/main` / fleet `#48` / `code/hello`
+   do not count.
 7. Public `GET .../branches/main` (2026-09-21) already shows
    `enable_status_check: true` and context `ci/woodpecker/pr/woodpecker`.
    Product tip can be pushed; merge waits until that context has posted
@@ -893,11 +949,13 @@ Require **one dated leftover comment** with all three items, **T2-1 last**
 later `_ensure_codeowners` apply does not count; re-delete via PR and write a
 new comment. Public `GET .../branches/main` is not item 1.
 
-1. Protection GET six flags: repo admin of `code/tradair-landing` attests
-   dated JSON: `GET .../branch_protections` `main` rule equals the six
-   architecture **protection GET** flags (**T2-2**, **T2-8**, **T2-3**,
-   **T2-9**, **T2-10**, **T2-5**). Not the Merge API row. Not inferred from a
-   green scanner. Not copied from another repo. Not `user_can_push`. **T2-2**
+1. Protection GET six flags: **repo admin of `code/tradair-landing`**
+   (distinct from the S2 pusher) attests dated JSON:
+   `GET .../branch_protections` `main` rule equals the six architecture
+   **protection GET** flags (**T2-2**, **T2-8**, **T2-3**, **T2-9**,
+   **T2-10**, **T2-5**). The GET is a read, not a #297 grant; in-repo CI
+   cannot perform it. Not the Merge API row. Not inferred from a green
+   scanner. Not copied from another repo. Not `user_can_push`. **T2-2**
    is `enable_push == false` only.
 2. Plant-check `{n}` + JSON: a **dedicated** plant-check PR following Tests
    item 4 and Observability’s fail-closed pair, changing only
